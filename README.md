@@ -41,3 +41,8 @@ Mise en cohérence des objets surfacique de deux pays en zone trasfrontalière :
 Raccordement des réseaux de deux pays à la frontière :
 
 [net_matching](https://github.com/openmapsforeurope2/net_matching)
+
+
+Suppression des objets et inforamtions attributaires relatives à un pays :
+
+[unmatching](https://github.com/openmapsforeurope2/unmatching)
