@@ -14,16 +14,16 @@ This github project is used to host the source code of the tools which constitut
 ![Process](docs/images/Process_nice_EN.png)
 
 The first step of the production process consists in collecting open datasets covering 3 themes (Administrative units, Transport network and Hydrography) from NMCAs (National Mapping and Cartographic Agencies) members of EuroGeographics. In a second step, a number of tools are applied to the data to transform it to the OME2 large-scale data model and ensure consistent edge-matching along international boundaries:
-* Model conversion tool: [data-model-transformer](https://github.com/openmapsforeurope2/data-model-transformer)
-* Edge-matching tool for administrative units along international boundaries at the lowest national level: [au_matching](https://github.com/openmapsforeurope2/au_matching)
-* Generation of upper level N administrative units from edge-matched level N-1 administrative units: [au_merging](https://github.com/openmapsforeurope2/au_merging)
-* Edge-matching for areas (hydropgraphy) between two countries along their common international boundary: [area_maching](https://github.com/openmapsforeurope2/area_matching)
-* Edge-matching for networks (transport and hydrography) between two countries along their common international boundary: [net_matching](https://github.com/openmapsforeurope2/net_matching)
-* SQL utility tools: [data-tools](https://github.com/openmapsforeurope2/data-tools)
+* [data-model-transformer](https://github.com/openmapsforeurope2/data-model-transformer) : transform national PostgreSQL databases into the OME2 data model implemented in PostgreSQL (model conversion tool). 
+* [au_matching](https://github.com/openmapsforeurope2/au_matching) : align administrative units at the lowest national level with the international boundaries used by the OME2 project (edge-matching tool for administrative units #1). 
+* [au_merging](https://github.com/openmapsforeurope2/au_merging) : generate level N administrative units from edge-matched level N-1 administrative units (edge-matching tool for administrative units #2).
+* [area_maching](https://github.com/openmapsforeurope2/area_matching) : edge-match area features from the hydropgraphy theme between two countries along their common international boundary. 
+* [net_matching](https://github.com/openmapsforeurope2/net_matching): edge-match network features from the transport and hydrography themes between two countries along their common international boundary. 
+* [data-tools](https://github.com/openmapsforeurope2/data-tools) : SQL utility tools. 
 
 After these production steps, the data is integrated to a central pan-European database, hosted on a Cloud server, which can then be released on the [Open Maps for Europe portal](https://www.mapsforeurope.org/datasets/hvlsp)
 
 An update process is also being put into place in order to update a country's data when a new version of their national dataset becomes available. It includes the following tools:
-* Generate update areas and extract of data inside those areas: [up_area_tools](https://github.com/openmapsforeurope2/up_area_tools)
-* Compute and record modifications between two successive versions of a PostgreSQL table: [change_detection](https://github.com/openmapsforeurope2/change_detection)
-* Delete objects and information from the country which is being updated in the central database: [unmatching](https://github.com/openmapsforeurope2/unmatching)
+* [up_area_tools](https://github.com/openmapsforeurope2/up_area_tools) : generate update areas and extract of data inside those areas.
+* [change_detection](https://github.com/openmapsforeurope2/change_detection) : compute and record modifications between two successive versions of a PostgreSQL table. 
+* [unmatching](https://github.com/openmapsforeurope2/unmatching) : delete objects and information from the country which is being updated in the central database. 
