@@ -5,6 +5,7 @@
 python3 script/clean.py -c conf.json -d <distance> -T <theme> -t <net_type>_w <country_code>
 ```
 
+<br>
 <u><strong>net_type = road_link, theme = tn</strong></u>
 | country                        | country_code | distance | 
 |--------------------------------|--------------|----------|
@@ -14,6 +15,7 @@ python3 script/clean.py -c conf.json -d <distance> -T <theme> -t <net_type>_w <c
 | Suisse                         | ch           | 5        |
 | Luxembourg                     | lu           | 5        |
 
+<br>
 <u><strong>net_type = railway_link, theme = tn</strong></u>
 | country                        | country_code | distance |
 |--------------------------------|--------------|----------|
@@ -23,6 +25,7 @@ python3 script/clean.py -c conf.json -d <distance> -T <theme> -t <net_type>_w <c
 | Suisse                         | ch           | 5        |
 | Luxembourg                     | lu           | 5        |
 
+<br>
 <u><strong>net_type = watercourse_link, theme = hy</strong></u>
 | country                        | country_code | distance |
 |--------------------------------|--------------|----------|

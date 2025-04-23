@@ -3,6 +3,7 @@
 python3 border_extract.py -c conf.json -T <theme> -t <net_type> -d <distance> <country_code> '#'
 ```
 
+<br>
 <u><strong>net_type = road_link, theme = tn</strong></u>
 | country                        | country_code | distance | 
 |--------------------------------|--------------|----------|
@@ -12,6 +13,7 @@ python3 border_extract.py -c conf.json -T <theme> -t <net_type> -d <distance> <c
 | Suisse                         | ch           | 4000     |
 | Luxembourg                     | lu           | 4000     |
 
+<br>
 <u><strong>net_type = railway_link, theme = tn</strong></u>
 | country                        | country_code | distance |
 |--------------------------------|--------------|----------|
@@ -21,6 +23,7 @@ python3 border_extract.py -c conf.json -T <theme> -t <net_type> -d <distance> <c
 | Suisse                         | ch           | 4000     |
 | Luxembourg                     | lu           | 4000     |
 
+<br>
 <u><strong>net_type = watercourse_link, theme = hy</strong></u>
 | country                        | country_code | distance |
 |--------------------------------|--------------|----------|
@@ -30,8 +33,7 @@ python3 border_extract.py -c conf.json -T <theme> -t <net_type> -d <distance> <c
 | Suisse                         | ch           | 4000     |
 | Luxembourg                     | lu           | 4000     |
 
-
-
+<br>
 <u>France:</u>
 
 ATTENTION!
