@@ -4,7 +4,6 @@ python3 border_extract.py -c conf.json -T <theme> -t <net_type> -d <distance> <c
 ```
 
 <u><strong>net_type = road_link, theme = tn</strong></u>
-|----------------------------------------------------------|
 | country                        | country_code | distance | 
 |--------------------------------|--------------|----------|
 | The Netherlands                | nl           | 4000     |
@@ -14,7 +13,6 @@ python3 border_extract.py -c conf.json -T <theme> -t <net_type> -d <distance> <c
 | Luxembourg                     | lu           | 4000     |
 
 <u><strong>net_type = railway_link, theme = tn</strong></u>
-|----------------------------------------------------------|
 | country                        | country_code | distance |
 |--------------------------------|--------------|----------|
 | The Netherlands                | nl           | 4000     |
@@ -24,7 +22,6 @@ python3 border_extract.py -c conf.json -T <theme> -t <net_type> -d <distance> <c
 | Luxembourg                     | lu           | 4000     |
 
 <u><strong>net_type = watercourse_link, theme = hy</strong></u>
-|----------------------------------------------------------|
 | country                        | country_code | distance |
 |--------------------------------|--------------|----------|
 | The Netherlands                | nl           | 4000     |
@@ -37,7 +34,7 @@ python3 border_extract.py -c conf.json -T <theme> -t <net_type> -d <distance> <c
 
 <u>France:</u>
 
-ATTENTION!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+ATTENTION!
 voir si pour avoir les zone "in dispute", plutot 
 ```
 <theme> -t <net_type> -B international -d <distance> fr
