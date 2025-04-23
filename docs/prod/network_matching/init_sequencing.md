@@ -4,20 +4,20 @@
 
 ## cleaning
 ### 1) Extract objects around a country's boundaries for cleaning: 
-[extraction](steps/extraction)
+[extraction](steps/extraction.md)
 
 ### 2) Cleaning (delete) objects outside border - (to be run from the data-tools project directory):
-[cleaning](steps/cleaning)
+[cleaning](steps/cleaning.md)
 
 ### 3) Integrate modifications in the main table and working history table:
-[integrate](steps/integrate)
+[integrate](steps/integrate.md)
 
 ## Matching
 ### 1) Extract objects on the border between two neighbouring countries for matching:
-[extraction](steps/extraction) with <distance> = 1000
+[extraction](steps/extraction.md) with <distance> = 1000
 
 ### 2) Matching
-[matching](steps/matching)
+[matching](steps/matching.md)
 
 ### 3) Integrate modifications in the main table and working history table:
-[integrate](steps/integrate) with <step> = 20
+[integrate](steps/integrate.md) with <step> = 20

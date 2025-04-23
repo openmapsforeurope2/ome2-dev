@@ -1,28 +1,36 @@
 
 # cleaning
 
-<u>The Netherlands:</u>
 ```
-python3 script/clean.py -c conf.json -d 5 -T tn -t road_link_w nl
-```
-
-<u>Belgium:</u>
-```
-python3 script/clean.py -c conf.json -d 5 -T tn -t road_link_w be
+python3 script/clean.py -c conf.json -d <distance> -T <theme> -t <net_type>_w <country_code>
 ```
 
-<u>France:</u>
-```
-python3 script/clean.py -c conf.json -d 5 -T tn -t road_link_w fr
-```
+<u><strong>net_type = road_link, theme = tn</strong></u>
+|----------------------------------------------------------|
+| country                        | country_code | distance | 
+|--------------------------------|--------------|----------|
+| The Netherlands                | nl           | 5        |
+| Belgium                        | be           | 5        |
+| France                         | fr           | 5        |
+| Suisse                         | ch           | 5        |
+| Luxembourg                     | lu           | 5        |
 
-<u>Suisse:</u>
-```
-python3 script/clean.py -c conf.json -d 5 -T tn -t road_link_w ch
-```
+<u><strong>net_type = railway_link, theme = tn</strong></u>
+|----------------------------------------------------------|
+| country                        | country_code | distance |
+|--------------------------------|--------------|----------|
+| The Netherlands                | nl           | 5        |
+| Belgium                        | be           | 5        |
+| France                         | fr           | 5        |
+| Suisse                         | ch           | 5        |
+| Luxembourg                     | lu           | 5        |
 
-<u>Luxembourg:</u>
-```
-python3 script/clean.py -c conf.json -d 5 -T tn -t road_link_w lu
-```
-
+<u><strong>net_type = watercourse_link, theme = hy</strong></u>
+|----------------------------------------------------------|
+| country                        | country_code | distance |
+|--------------------------------|--------------|----------|
+| The Netherlands                | nl           | 5        |
+| Belgium                        | be           | 5        |
+| France                         | fr           | 5        |
+| Suisse                         | ch           | 5        |
+| Luxembourg                     | lu           | 5        |

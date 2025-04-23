@@ -251,13 +251,7 @@ Le traitement est réaliser en trois étapes:
 - étape 13) raccordement transfrontalier
 - étape 14) intégration des modifications dans le table de production
 
-Le processus de mise à jour différe du processus de constitution initiale. En effet, dans le cas d'une mise à jour, on ne va extraire à l'étape 12) que les données situées dans les zones de mise à jour. Ensuite l'étape 13) sera séquencée en trois sous-étape : on lance la première partie du processus de raccordement sur les données situées dans les zones de mise à jour, ensuite on extrait de la table de production le reste des données frontalières pour enfin lancer la seconde partie du processus de raccordement (cette deuxième phase réalise des nettoyages basés sur des calculs de chemins qui nécessitent d'avoir l'ensemble du réseau).
-L'étape 14), quant à elle, est la même que ce soit pour une mise à jour ou une initialisation.
-
-
-#### outils utilisés
-
-[up_area_tools](https://github.com/openmapsforeurope2/up_area_tools)
+Le processus de mise à jour différe du processus de constitution initiale. En effet, dans le cas d'une mise à jour, on ne va extraire à l'étape 12) que les données situées dans les zones de mise à jour. Ensuite l'étape 13) sera séquencée en trois sous-étape : on lance la première partie du processus de raccordement sur les données situées dans les zones de mise à jour, ensuite on extrait de la table de production le reste des données frontalières pour enfin lancer la seconde partie du processus de raccordement (cette deuxième phase réalise des nettoyages basés sur des calculs de chemins qui nécessitent d'avoir l'ensemble du réseau).objets
 <br>
 [data-tools](https://github.com/openmapsforeurope2/data-tools)
 <br>
