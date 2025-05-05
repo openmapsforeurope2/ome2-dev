@@ -1,4 +1,4 @@
-![under_construction](images/under_construction.png)
+![under_construction](../../images/under_construction.png)
 
 # road_link matching steps sequencing
 
@@ -14,7 +14,7 @@
 
 ## Matching
 ### 1) Extract objects on the border between two neighbouring countries for matching:
-[extraction](steps/extraction.md) with <distance> = 1000
+[extraction_for_matching](steps/extraction_for_matching.md)
 
 ### 2) Matching
 [matching](steps/matching.md)

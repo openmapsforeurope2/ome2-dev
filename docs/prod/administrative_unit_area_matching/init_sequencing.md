@@ -1,4 +1,4 @@
-![under_construction](images/under_construction.png)
+![under_construction](../../images/under_construction.png)
 
 # administrative_unit_area matching steps sequencing
 

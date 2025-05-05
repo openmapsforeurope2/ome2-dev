@@ -27,14 +27,14 @@ Le pays *<ome2land>* possède un voisin *<ome2neighbor>* dont le code pays est *
 
 
 
-### Etape 1 : convertion de modèle
+### Etape 1 : conversion de modèle
 
 Cette étape consiste à convertir les données depuis leur modèle national d'origine vers le modèle OME2.
-Dans le cas d'une première intégration des donnés du pays *<ome2land>* l'opérateur chargé de la réalisation de cette étape devra écrire l'ensemble des fichiers de configuration d'écrivant les opérations de convertion pour chaque champ.
-Dans le cas d'une mise à jour l'opérateur devra veillé à ce que le modèle national n'a pas évolué depuis la dernière intégration et, le cas échéant, réaliser les adaptations nécessaires.
-Les fichiers de configuration constituent le coeur du moteur de convertion.
+Dans le cas d'une première intégration des donnés du pays *<ome2land>*, l'opérateur chargé de la réalisation de cette étape devra écrire l'ensemble des fichiers de configuration décrivant les opérations de conversion pour chaque champ.
+Dans le cas d'une mise à jour l'opérateur devra s'assurer que le modèle national n'a pas évolué depuis la dernière intégration. Si le modèle a subi des modifications, les fichiers de configuration devront être adaptés en conséquence.
+Les fichiers de configuration constituent le coeur du moteur de conversion.
 La table cible est la table de mise à jour *<net_type>_up*.
-Préalablement à la convertion des données, si la table *<net_type>_up* n'existe pas elle est créée, sinon tous les objets du pays *<ome2land>* (avec le code 'om') sont supprimés.
+Préalablement à la conversion des données, si la table *<net_type>_up* n'existe pas elle est créée, sinon tous les objets du pays *<ome2land>* (avec le code 'om') sont supprimés.
 
 
 #### outil utilisé
@@ -43,7 +43,7 @@ Préalablement à la convertion des données, si la table *<net_type>_up* n'exis
 
 #### configuration
 Le fichier de configuration conf.json doit être renseigné en indiquant les paramètres de connexion aux bases source et cible, ainsi que les codes du pays et du thème traités.
-Le fichier ce présente sous la forme suivante:
+Le fichier se présente sous la forme suivante:
 ```
 {
     "country":"om",
@@ -89,9 +89,9 @@ Cette phase du processus se déroule en trois étapes :
 
 #### configuration
 
-Dans le fichier db_conf.json doivent être renseignés les paramètres de connection à la base de donnée OME2.
+Dans le fichier db_conf.json doivent être renseignés les paramètres de connexion à la base de donnée OME2.
 <br>
-Dans le fichier conf.json il faut veiller à ce que les différents schéma soient en cohérence avec la structure de la base OME2.
+Dans le fichier conf.json il faut veiller à ce que les différents schémas soient en cohérence avec la structure de la base OME2.
 Voici, par exemple, à quoi peut ressembler la configuration des schémas pour le thème <theme>
 ```
 {
@@ -135,9 +135,9 @@ Les deux tables à comparer sont :
 - *<net_type>_up* : la table de mise à jour contenant la nouvelle version du jeux de données que l'on souhaite intégrer.
 
 Toutes les différences (suppressions, ajouts et modifications) sont enregistrées dans la table *<net_type>_cd*.
-Préalablement au calcul du différentiel, si la table *<net_type>_cd* n'existe pas elle est créée, sinon tous les enregistrements du pays *<ome2land>* (avec le code 'om') sont supprimés.
+Préalablement au calcul du différentiel, si la table *<net_type>_cd* n'existe pas, elle est créée, sinon tous les enregistrements du pays *<ome2land>* (avec le code 'om') sont supprimés.
 
-Parmis les informations contenue dans la table résultat, on trouve:
+Parmi les informations contenue dans la table résultat, on trouve:
 - l'identifiant dans la table de référence
 - l'identifiant dans la table de mise à jour
 - un indicateur mentionnant si la différence est de nature géométrique
@@ -150,9 +150,9 @@ Parmis les informations contenue dans la table résultat, on trouve:
 
 #### configuration
 
-Dans le fichier db_conf.ini doivent être renseignés les paramètres de connection à la base de donnée OME2.
+Dans le fichier db_conf.ini doivent être renseignés les paramètres de connexion à la base de donnée OME2.
 <br>
-Dans le fichier theme_parameters.ini, on a parmis le paramètres de configuration notables :
+Dans le fichier theme_parameters.ini, on a parmi les paramètres de configuration notables :
 - un seuil de détection d'une modification géométrique
 - la taille des dalles (le calcul de détection de changements est réalisé selon une tesselation)
 - la liste des champs à ignorer pour la détection de changements sémantiques
@@ -176,10 +176,10 @@ Préalablement à la création des zones de mise à jour, si la table *<net_type
 
 #### configuration
 
-Dans le fichier db_conf.ini doivent être renseignés les paramètres de connection à la base de donnée OME2.
+Dans le fichier db_conf.ini doivent être renseignés les paramètres de connexion à la base de donnée OME2.
 <br>
-Le fichier theme_parameters.ini, permet de réaliser les paramétrages suivant :
-- distance seuil permettant de selectionner les objets proches de la frontière
+Le fichier theme_parameters.ini, permet de réaliser les paramétrages suivants :
+- distance seuil permettant de sélectionner les objets proches de la frontière
 - rayon du buffer réalisé autour d'un objet mis à jour
 
 #### commande
@@ -189,7 +189,7 @@ up_area_tools --c epg_parameters.ini --op create --T th --f <net_type> --cc om
 
 ### Etapes 7, 8, 9, 10 et 11 : substitution des objets dans les zones de mise à jour
 
-Dans le contexte d'une mise à jour, l'objectif est ici de supprimer dans les zones de mise à jour les données du pays *<ome2land>* qui ont été précédemment raccordées, puis d'injecter dans ces mêmes zones les données issues du nouveau jeu de données.
+Dans le contexte d'une mise à jour, l'objectif est ici de supprimer, dans les zones de mise à jour, les données du pays *<ome2land>* qui ont été précédemment raccordées, puis d'injecter dans ces mêmes zones les données issues du nouveau jeu de données.
 
 Cette phase du processus se déroule en cinq étapes :
 - étape 7) extraction depuis la table de production dans la table de travail *<net_type>_w* des données du pays *<ome2land>* situées dans les zones de mise à jour.
@@ -210,7 +210,7 @@ Cette phase du processus se déroule en cinq étapes :
 
 #### configuration
 
-Pour l'outil *data-tools*, le fichier db_conf.json doivent être renseignés les paramètres de connection à la base de donnée OME2. Pour les autres outils il s'agit du fichier db_conf.ini.
+Pour l'outil *data-tools*, dans le fichier db_conf.json doivent être renseignés les paramètres de connexion à la base de donnée OME2. Pour les autres outils il s'agit du fichier db_conf.ini.
 <br>
 Autres éléments de configuration notables :
 - dans le fichier theme_parameters.ini de l'outil *up_area_tools*, il est possible de définir la taille des dalles utilisées pour l'extraction afin d'optimiser la gestion de la mémoire.
@@ -246,12 +246,12 @@ change_detection --c epg_parameters.ini -- op apply_diff --T th --f <net_type> -
 
 Le processus de raccordement est lancé itérativement, frontière par frontière (une frontière est composée de l'ensemble des géométries linéaires constituant la séparation entre deux pays frontaliers). On va donc traiter successivement les frontières du pays *<ome2land>* le séparant de l'ensemble de ses pays voisins.
 
-Le traitement est réaliser en trois étapes:
+Le traitement est réalisé en trois étapes:
 - étape 12) extraction des données autour de la frontière à traiter depuis la table de production
 - étape 13) raccordement transfrontalier
 - étape 14) intégration des modifications dans le table de production
 
-Le processus de mise à jour différe du processus de constitution initiale. En effet, dans le cas d'une mise à jour, on ne va extraire à l'étape 12) que les données situées dans les zones de mise à jour. Ensuite l'étape 13) sera séquencée en trois sous-étape : on lance la première partie du processus de raccordement sur les données situées dans les zones de mise à jour, ensuite on extrait de la table de production le reste des données frontalières pour enfin lancer la seconde partie du processus de raccordement (cette deuxième phase réalise des nettoyages basés sur des calculs de chemins qui nécessitent d'avoir l'ensemble du réseau).objets
+Le processus de mise à jour différe du processus de constitution initiale. En effet, dans le cas d'une mise à jour, on ne va extraire à l'étape 12) que les données situées dans les zones de mise à jour. Ensuite l'étape 13) sera séquencée en trois sous-étape : on lance la première partie du processus de raccordement sur les données situées dans les zones de mise à jour, ensuite on extrait de la table de production le reste des données frontalières pour enfin lancer la seconde partie du processus de raccordement (cette deuxième phase réalise des nettoyages basés sur des calculs de chemins qui nécessitent d'avoir l'ensemble du réseau).
 <br>
 [data-tools](https://github.com/openmapsforeurope2/data-tools)
 <br>
@@ -259,11 +259,11 @@ Le processus de mise à jour différe du processus de constitution initiale. En 
 
 #### configuration
 
-Pour l'outil *data-tools*, le fichier db_conf.json doivent être renseignés les paramètres de connection à la base de donnée OME2. Pour les autres outils il s'agit du fichier db_conf.ini.
+Pour l'outil *data-tools*, dans le fichier db_conf.json doivent être renseignés les paramètres de connexion à la base de donnée OME2. Pour les autres outils il s'agit du fichier db_conf.ini.
 <br>
 l'outil *up_area_tools* possède un fichier de configuration theme_parameters.ini dans lequel il est possible de définir la taille des dalles utilisées pour l'extraction à des fins d'optimisation de l'utilisation de la mémoire.
 <br>
-L'outil *net_matching* possède un fichier de configuration par type de réseau (road_link, railway, watercourse_link). Chacun des ces fichiers possède de nombreux paramètres permettant de configurer les algorithmes de raccordement. Ces paramètres peuvent être ajustés en fonction des spécificités de chaque pays.
+L'outil *net_matching* possède un fichier de configuration par type de réseau (road_link, railway, watercourse_link). Chacun de ces fichiers possède de nombreux paramètres permettant de configurer les algorithmes de raccordement. Ces paramètres peuvent être ajustés en fonction des spécificités de chaque pays.
 
 #### commandes
 
