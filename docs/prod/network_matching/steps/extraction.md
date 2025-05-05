@@ -2,8 +2,10 @@
 ```
 python3 border_extract.py -c conf.json -T <theme> -t <net_type> -d <distance> <country_code> '#'
 ```
-
+## Extract parameters for clean
 <br>
+
+Below are the distance parameters used to extract data for cleaning (i.e. deleting data out of the country's extent).
 
 <strong>net_type = road_link, theme = tn</strong>
 | country                        | country_code | distance | 
@@ -57,3 +59,10 @@ python3 script/border_extract.py -c conf.json -T <theme> -t <net_type> -b ch -d 
 python3 script/border_extract.py -c conf.json -T <theme> -t <net_type> -b de -d <distance> -n fr
 python3 script/border_extract.py -c conf.json -T <theme> -t <net_type> -b be -d <distance> -n fr
 ```
+
+## Extract parameters for edge-matching
+<br>
+
+Below are the distance parameters used to extract data for edge-matching between two countries.
+
+TO-DO
