@@ -25,7 +25,7 @@ As a result, the administrative tables for each relevant level for the country w
 | Luxembourg                     | lu           | 1000     |               |
 
 
-### 1) Extract objects around a country's boundaries for matching:
+#### 1) Extract objects around a country's boundaries for matching:
 ```
 python3 script/border_extract.py -c conf.json -T au -t administrative_unit_area_<level> -d <distance> <country_code> '#'
 ```
