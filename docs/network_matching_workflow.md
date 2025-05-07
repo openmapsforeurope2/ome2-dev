@@ -1,5 +1,3 @@
-![under_construction](images/under_construction.png)
-
 # Description du processus pour l'intégration de nouvelles données de type réseau
 
 # Introduction
@@ -306,4 +304,25 @@ up_area_tools --c epg_parameters.ini --op extract --T th --f <net_type> --cc om 
 - étape 14)
 ```
 python3 integrate.py -c conf.json -T tn -t <net_type> -s 20
+```
+
+
+### Etape 15 : mise à jour de la table de référence
+
+Dans le contexte d'une mise à jour, à l'issu du processus, il faut appliquer le différentiel sur la table de référence afin quelle reflète l'état initial des dernières données injectées du pays traité. Ainsi cette table pourra servir de base pour le calcul du différentiel lors de la prochaine mise à jour.
+<br>
+Dans le contexte d'une constitution initiale, les données de la table de mise à jour sont simplement copiées dans la table de référence.
+
+#### outils utilisés
+
+[change_detection](https://github.com/openmapsforeurope2/change_detection)
+
+#### configuration
+
+Dans le fichier db_conf.ini doivent être renseignés les paramètres de connexion à la base de donnée OME2.
+
+#### commandes
+
+```
+change_detection --c epg_parameters.ini -- op apply_diff --T th --f <net_type> --ref ref --cc om
 ```
