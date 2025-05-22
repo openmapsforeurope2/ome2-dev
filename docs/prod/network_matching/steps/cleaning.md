@@ -41,35 +41,3 @@ python3 script/clean.py -c conf.json -d <distance> -T <theme> -t <net_type>_w <c
 
 The command lines and parameters used during the production of the HVLSP 2.0 and 3.0 can be found in the [clean_hy_tn.sh](https://github.com/openmapsforeurope2/data-tools/blob/main/use_case/clean_hy_tn.sh) file in the data-tools/use_case repository.
 
-<br>
-
-<strong>net_type = road_link, theme = tn</strong>
-| country                        | country_code | distance | 
-|--------------------------------|--------------|----------|
-| The Netherlands                | nl           | 5        |
-| Belgium                        | be           | 5        |
-| France                         | fr           | 5        |
-| Suisse                         | ch           | 5        |
-| Luxembourg                     | lu           | 5        |
-
-<br>
-
-<strong>net_type = railway_link, theme = tn</strong>
-| country                        | country_code | distance |
-|--------------------------------|--------------|----------|
-| The Netherlands                | nl           | 5        |
-| Belgium                        | be           | 5        |
-| France                         | fr           | 5        |
-| Suisse                         | ch           | 5        |
-| Luxembourg                     | lu           | 5        |
-
-<br>
-
-<strong>net_type = watercourse_link, theme = hy</strong>
-| country                        | country_code | distance |
-|--------------------------------|--------------|----------|
-| The Netherlands                | nl           | 5        |
-| Belgium                        | be           | 5        |
-| France                         | fr           | 5        |
-| Suisse                         | ch           | 5        |
-| Luxembourg                     | lu           | 5        |
