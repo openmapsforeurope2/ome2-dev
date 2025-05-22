@@ -39,6 +39,8 @@ There has been no reason to use a different value so far.
 python3 script/clean.py -c conf.json -d <distance> -T <theme> -t <net_type>_w <country_code>
 ```
 
+The command lines and parameters used during the production of the HVLSP 2.0 and 3.0 can be found in the [clean_hy_tn.sh](https://github.com/openmapsforeurope2/data-tools/blob/main/use_case/clean_hy_tn.sh) file in the data-tools/use_case repository.
+
 <br>
 
 <strong>net_type = road_link, theme = tn</strong>
