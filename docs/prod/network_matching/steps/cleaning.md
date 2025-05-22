@@ -22,7 +22,7 @@ The extract distance corresponds of the size of the buffer which will be created
 
 To determine the extract distance, you can open the data in QGIS and approximately measure the distance between the international boundaries and the farthest objects. The extract distance parameter should be slightly higher than the distance measured in QGIS.
 
-![Extract_distance_QGIS](docs/images/Extract_distance_QGIS.png)
+![Extract_distance_QGIS](https://github.com/openmapsforeurope2/OME2/blob/main/docs/images/Extract_distance_QGIS.png)
 
 In the example above, the distance measured between the boundary and the farthest objects is ~17308 meters. To be safe, an extract distance of 20000 meters can be used.
 
