@@ -1,3 +1,5 @@
+/!\ TO BE DELETED
+
 # extraction
 ```
 python3 border_extract.py -c conf.json -T <theme> -t <net_type> -d <distance> <country_code> '#'
