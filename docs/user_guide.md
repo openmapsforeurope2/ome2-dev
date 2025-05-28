@@ -21,6 +21,13 @@ The model conversion tool needs one JSON configuration file per theme to run the
 
 
 ### 3. International boundaries
+For the OME2 project, in order to harmonise data across countries, it is necessary to use common international boundaries. However, neighbouring countries often provide different geometries for their international boundaries, even when these are officially agreed.
+
+An FME workbench was therefore put into place to calculate common "technical" boundaries, which are considered as a reference for the project: [boundary_unification_process](https://github.com/openmapsforeurope2/fme_workbenches/blob/main/boundary_unification_process/Boundary_unification_process.fmw)
+
+> TO-DO: move to boundary_unification doc
+> When an isolated country is integrated, only the first step of the workbench needs to be used. This creates the boundary lines (including coastlines) all around the country.
+> Then the lines need to be split manually where there is a change in country code or boundary type (international boundary vs coastline).
 
 
 ### 4. Administrative units theme (AU)
