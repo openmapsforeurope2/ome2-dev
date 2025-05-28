@@ -23,17 +23,31 @@ The model conversion tool needs one JSON configuration file per theme to run the
 ### 3. International boundaries
 
 
-### 4. Edge-matching
+### 4. Administrative units theme (AU)
 
-#### 4.1. Administrative units theme (AU)
+#### 4.1. Edge-matching for the AU theme
 [User guide for AU matching](https://github.com/openmapsforeurope2/OME2/blob/main/docs/prod/administrative_unit_area_matching/user_guide_au.md)
 
-#### 4.2. Transport network theme (TN)
+#### 4.2. Administrative_hierarchy table
+The administrative_hierarchy table is a table without geometry which describes the administrative system of each country. This table is an extract of EuroBoundaryMaps' EBM_ISN table for the countries included in the HVLSP.
+
+When a new country is added to the HVLSP, the relevant rows need to be retrieved from EBM_ISN and integrated into au.administrative_hierarchy.
+
+This is currently done with an FME workbench: [AU_manage_administrative_hierarchy.fmw](https://github.com/openmapsforeurope2/fme_workbenches/blob/main/AU/AU_manage_administrative_hierarchy.fmw)
+The path to the latest EBM file gdb (locally on the user's computer), the connection information to the HVLSP database and a list of countries to integrate need to be provided.
+
+> _WARNING:_ 
+> - _in the final infrastructure, it will probably not be possible to connect FME directly to the HVLSP database._
+> - _this workbench does not handle updates, it only add rows to the administrative_hierarchy table but does not update existing rows if the processed country had already been included before._
+> 
+> _Therefore, a more permanent solution needs to be determined: cf.[issue #16](https://github.com/openmapsforeurope2/OME2/issues/16)_
+
+### 5. Transport network theme (TN)
 * [Cleaning](https://github.com/openmapsforeurope2/OME2/blob/main/docs/prod/network_matching/steps/cleaning.md)
 * [Network matching](https://github.com/openmapsforeurope2/OME2/blob/main/docs/prod/network_matching/steps/matching.md)
 * [Integration](https://github.com/openmapsforeurope2/OME2/blob/main/docs/prod/network_matching/steps/integration.md)
 
-#### 4.3. Hydrography theme (HY)
+### 6. Hydrography theme (HY)
 * [Cleaning](https://github.com/openmapsforeurope2/OME2/blob/main/docs/prod/network_matching/steps/cleaning.md)
 * [Area matching]
 * [Network matching](https://github.com/openmapsforeurope2/OME2/blob/main/docs/prod/network_matching/steps/matching.md)
