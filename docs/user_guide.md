@@ -29,6 +29,7 @@ An FME workbench was therefore put into place to calculate common "technical" bo
 > - When an isolated country is integrated, only the first step of the workbench needs to be used. This creates the boundary lines (including coastlines) all around the country.
 > - Then the lines need to be split manually where there is a change in country code or boundary type (international boundary vs coastline).
 > - Create point in ib.international_boundary_node when there is a change in the boundary line (type or country code).
+> - Use EBM as reference.
 
 
 ### 4. Administrative units theme (AU)
