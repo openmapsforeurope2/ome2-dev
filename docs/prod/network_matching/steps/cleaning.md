@@ -43,11 +43,18 @@ Please note that the new cleaning distance will be applied to all themes and cou
 
 ## Run the command line
 
-/!\ TO BE UPDATED
+Ex 1: clean French road_link on the boundaries with be and lu
+~~~
+python3 script/clean.py -c path/to/conf.json -b lu -b be -T tn -t road_link fr
+~~~
 
-```
-python3 script/clean.py -c conf.json -d <distance> -T <theme> -t <net_type>_w <country_code>
-```
+Ex 2: clean the French tn theme (all tables) on all of France's international boundaries
+~~~
+python3 script/clean.py -c path/to/conf.json -a -T tn fr
+~~~
 
+The full documentation for the clean tool is accessible [here](https://github.com/openmapsforeurope2/data-tools/tree/main).
+
+/!\ OBSOLETE
 The command lines and parameters used during the production of the HVLSP 2.0 and 3.0 can be found in the [clean_hy_tn.sh](https://github.com/openmapsforeurope2/data-tools/blob/main/use_case/clean_hy_tn.sh) file in the data-tools/use_case repository.
 
