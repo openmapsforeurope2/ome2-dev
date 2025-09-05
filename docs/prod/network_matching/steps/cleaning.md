@@ -26,6 +26,12 @@ To determine the extract distance, you can open the data in QGIS and approximate
 
 In the example above, the distance measured between the boundary and the farthest objects is ~17308 meters. To be safe, an extract distance of 20000 meters can be used.
 
+Once the extracting distance has been decided, it needs to be indicated in the [configuration file](https://github.com/openmapsforeurope2/data-tools/blob/main/config/conf.json) used by the cleaning tool:
+- if it is the same as the default value, it does not need to be added.
+- if it is different from the default value, it needs to be added in the "extraction_distance" section corresponding to the theme to be processed (hy or tn).
+<img width="567" height="480" alt="image" src="https://github.com/user-attachments/assets/3dcdc887-2228-4b13-bc26-ac019a3bb45e" />
+
+
 #### Cleaning distance
 The default value for the cleaning distance is 5 meters. This value was chosen empirically while testing the edge-matching process. 
 There has been no reason to use a different value so far.
