@@ -36,6 +36,10 @@ Once the extracting distance has been decided, it needs to be indicated in the [
 The default value for the cleaning distance is 5 meters. This value was chosen empirically while testing the edge-matching process. 
 There has been no reason to use a different value so far.
 
+It is however possible to modify the cleaning distance in the [configuration file](https://github.com/openmapsforeurope2/data-tools/blob/main/config/conf.json):
+<img width="505" height="480" alt="image" src="https://github.com/user-attachments/assets/935d1705-e3c0-47f4-a215-980de8e06200" />
+
+Please note that the new cleaning distance will be applied to all themes and countries.
 
 ## Run the command line
 
