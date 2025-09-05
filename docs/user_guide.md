@@ -47,7 +47,7 @@ The path to the latest EBM file gdb (locally on the user's computer), the connec
 
 > _WARNING:_ 
 > - _in the final infrastructure, it will probably not be possible to connect FME directly to the HVLSP database._
-> - _this workbench does not handle updates, it only add rows to the administrative_hierarchy table but does not update existing rows if the processed country had already been included before._
+> - _this workbench does not handle updates, it only adds rows to the administrative_hierarchy table but does not update existing rows if the processed country had already been included before._
 > 
 > _Therefore, a more permanent solution needs to be determined: cf.[issue #16](https://github.com/openmapsforeurope2/OME2/issues/16)_
 
