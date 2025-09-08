@@ -24,6 +24,6 @@ The first step of the production process consists in collecting open datasets co
 After these production steps, the data is integrated to a central pan-European database, hosted on a Cloud server, which can then be released on the [Open Maps for Europe portal](https://www.mapsforeurope.org/datasets/hvlsp)
 
 An update process is also being put into place in order to update a country's data when a new version of their national dataset becomes available. It includes the following tools:
-* [up_area_tools](https://github.com/openmapsforeurope2/up_area_tools) : generate update areas and extract of data inside those areas.
+* [up_area_tools](https://github.com/openmapsforeurope2/up_area_tools) : generate update areas and extract data inside those areas.
 * [change_detection](https://github.com/openmapsforeurope2/change_detection) : compute and record modifications between two successive versions of a PostgreSQL table. 
 * [unmatching](https://github.com/openmapsforeurope2/unmatching) : delete objects and information from the country which is being updated in the central database. 
