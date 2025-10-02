@@ -1,3 +1,5 @@
+# OBSOLETE
+
 # How to fill a json configuration file for the model conversion tool?
 
 ### General parameters
