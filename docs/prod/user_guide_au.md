@@ -77,3 +77,13 @@ Before running the integrate, check in the log file whether invalid polygons hav
 ```
 python3 script/integrate.py -c conf.json -T au -t administrative_unit_area_<n> -s 30
 ```
+
+
+2. Administrative_hierarchy table
+The administrative_hierarchy table is a table without geometry which describes the administrative system of each country. This table is an extract of EuroBoundaryMaps' EBM_ISN table for the countries included in the HVLSP.
+When a new country is added to the HVLSP, the relevant rows need to be retrieved from EBM_ISN and integrated into au.administrative_hierarchy.
+This is currently done with an FME workbench: AU_manage_administrative_hierarchy.fmw The path to the latest EBM file gdb (locally on the user's computer), the connection information to the HVLSP database and a list of countries to integrate need to be provided.
+WARNING:
+in the final infrastructure, it will probably not be possible to connect FME directly to the HVLSP database.
+this workbench does not handle updates, it only adds rows to the administrative_hierarchy table but does not update existing rows if the processed country had already been included before.
+Therefore, a more permanent solution needs to be determined: cf.issue #16
