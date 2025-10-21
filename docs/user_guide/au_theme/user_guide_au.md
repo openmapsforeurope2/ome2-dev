@@ -2,6 +2,10 @@
 
 ## Summary
 National administrative units have been provided by a country to the OME2 project. If neighbouring countries have also provided data, the OME2 project may have calculated technical international boundaries to be used by the project, based on the data provided by neighbouring countries, which are slightly different from the versions provided by each country. As a result, national administrative units are no longer consistent with the technical boundaries used in OME2.
+Example (OME2 international boundary in light green) :
+
+<img width="939" height="668" alt="image" src="https://github.com/user-attachments/assets/564f34b4-11ce-4e49-9628-44b34464d90f" />
+
 The objective is to align national administrative units at all levels with the international boundaries agreed upon for OME2.
 
 This will be done in two steps:
