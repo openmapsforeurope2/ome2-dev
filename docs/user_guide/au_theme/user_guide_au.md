@@ -82,6 +82,8 @@ Please note that the last complete level should be used as reference for merging
 
 The following steps need to be repeated for all upper administrative levels, going from lower to upper. For instance, if the lowest level is 4, these steps have to be performed three times successively on levels 3, 2 and 1. In the following command lines, the level to be processed is <n>. The level to be used as reference is named <ref>: as mentioned above, the <ref> level might be the one directly below level <n> if it is complete, or a lower level.
 
+Please note that, since the polygons representing administrative units get bigger at each level, processing times increase as well. The process for level 1 for large countries such as France or Spain might take several hours.
+
 #### 2.1. Extract objects around a country's boundaries
 In the same way as step 1.1, administrative units at level n are extracted along international boundaries. They are stored in the administrative_unit_area_<n>_w working table, in the working schema.
 ```
