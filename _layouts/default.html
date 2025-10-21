@@ -9,7 +9,9 @@
 <body>
   <header class="site-header">
     <a class="brand" href="{{ site.baseurl | relative_url }}">{{ site.title }}</a>
-    <nav class="site-nav">
+
+    <!-- top navigation (kept for small screens) -->
+    <nav class="site-nav" aria-label="Main navigation">
       <ul>
         {% for item in site.data.navigation %}
         <li><a href="{{ item.url | prepend: site.baseurl | relative_url }}">{{ item.title }}</a></li>
@@ -18,9 +20,15 @@
     </nav>
   </header>
 
-  <main class="content">
-    {{ content }}
-  </main>
+  <div class="page-wrap">
+    <aside class="sidebar" role="complementary" aria-label="Sidebar navigation">
+      {% include sidebar.html %}
+    </aside>
+
+    <main class="content" role="main">
+      {{ content }}
+    </main>
+  </div>
 
   <footer class="site-footer">
     <p>&copy; {{ site.time | date: "%Y" }} OpenMapsForEurope</p>
