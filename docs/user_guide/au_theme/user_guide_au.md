@@ -1,4 +1,4 @@
-# Edge-matching of the AU (Administrative units) theme
+# Edge-matching for the Administrative units theme (AU)
 
 ## Objective
 National administrative units have been provided by a country to the OME2 project. If neighbouring countries had also provided data, the OME2 project may have calculated technical international boundaries, based on the data provided by neighbouring countries, which are slightly different from the versions provided by each country. As a result, national administrative units are no longer consistent with the technical boundaries used in OME2.
