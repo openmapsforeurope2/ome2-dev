@@ -1,13 +1,15 @@
-# Edge-matching for the Administrative units theme (AU)
+# Administrative units theme (AU)
 
-## Objective
-National administrative units have been provided by a country to the OME2 project. If neighbouring countries had also provided data, the OME2 project may have calculated technical international boundaries, based on the data provided by neighbouring countries, which are slightly different from the versions provided by each country. As a result, national administrative units are no longer consistent with the technical boundaries used in OME2.
+## Summary
+National administrative units have been provided by a country to the OME2 project. If neighbouring countries have also provided data, the OME2 project may have calculated technical international boundaries to be used by the project, based on the data provided by neighbouring countries, which are slightly different from the versions provided by each country. As a result, national administrative units are no longer consistent with the technical boundaries used in OME2.
 The objective is to align national administrative units at all levels with the international boundaries agreed upon for OME2.
 
 This will be done in two steps:
 - Step 1: administrative units at the lowest level are aligned with the international boundaries, using the [au_matching](https://github.com/openmapsforeurope2/au_matching) tool.
-- Step 2: administrative units from upper levels are recreated by merging lower level units (correctly aligned thanks to step 1), using the [au_merging](https://github.com/openmapsforeurope2/au_merging) tool.
+- Step 2: administrative units from upper levels are recreated by merging lower level units (correctly aligned thanks to step 1), using the [au_merging](https://github.com/openmapsforeurope2/au_merging) tool. This step has to be applied on all upper levels successively.
 - Step 3: fill the administrative_hierarchy table with an FME workbench [AU_manage_administrative_hierarchy.fmw](https://github.com/openmapsforeurope2/fme_workbenches/tree/main/AU).
+
+At the end of these 3 steps, the production of the AU theme for the new country is finished.
 
 ## Pre-requisites:
 - The country's national data has been converted to the OME2 data model and integrated in the central database.
