@@ -1,46 +1,54 @@
-# User guide for the production of the AU (Administrative units) theme
+# Edge-matching of the AU (Administrative units) theme
 
-## Step 1: model conversion
-When a new AU dataset is received for a country, the first step consists in implementing the model conversion parameter file, then launch the model conversion itself.
-See [add link]
-As a result, the administrative tables for each relevant level for the country will be filled:
-* au.administrative_unit_area_1
-* au.administrative_unit_area_2
-* au.administrative_unit_area_3
-* au.administrative_unit_area_4
-* au.administrative_unit_area_5
-* au.administrative_unit_area_6
+## Objective
+National administrative units have been provided by a country to the OME2 project. If neighbouring countries had also provided data, the OME2 project may have calculated technical international boundaries, based on the data provided by neighbouring countries, which are slightly different from the versions provided by each country. As a result, national administrative units are no longer consistent with the technical boundaries used in OME2.
+The objective is to align national administrative units at all levels with the international boundaries agreed upon for OME2.
 
-## Step 2: generate OME2 international boundaries with neighbouring countries
+This will be done in two steps:
+- Step 1: administrative units at the lowest level are aligned with the international boundaries, using the au_matching tool.
+- Step 2: administrative units from upper levels are recreated by merging lower level units (correctly aligned thanks to step 1), using the au_merging tool. 
 
+## Pre-requisites:
+- The country's national data has been converted to the OME2 data model and integrated in the central database.
+- Technical international boundaries have been set up with the neigbouring countries.
 
-## Step 3: edge-match administrative units at the lowest level
+## Step 1: edge-match administrative units at the lowest level
+This step needs to be performed on each country's lowest administrative level. The table below indicates, for each country, the lowest administrative level provided. The distance column indicates which distance is used to extract administrative units along boundaries (see below).
 
-| country                        | country_code | distance | highest_level | 
-|--------------------------------|--------------|----------|---------------|
-| The Netherlands                | nl           | 1000     | 3             |
-| Belgium                        | be           | 1000     | 5             |
-| France                         | fr           | 1000     | 6             |
-| Suisse                         | ch           | 1000     |               |
-| Luxembourg                     | lu           | 1000     |               |
+| country_code | country                        | distance | lowest_level | 
+|--------------|--------------------------------|----------|--------------|
+| ad           | Andorra                        | 1000     | 1            |
+| at           | Austria                        | 1000     | 5            |
+| be           | Belgium                        | 1000     | 5            |
+| ch           | Switzerland                    | 1000     | 4            |
+| cz           | Czech Republic                 | 1000     | 4            |
+| dk           | Denmark                        | 1000     | 3            |
+| es           | Spain                          | 1000     | 4            |
+| fi           | Finland                        | 1000     | 5            |
+| fr           | France                         | 1000     | 6            |
+| li           | Liechtenstein                  | 1000     | 2            |
+| lu           | Luxembourg                     | 1000     | 3            |
+| nl           | The Netherlands                | 1000     | 3            |
 
+#### 1) Extract objects around a country's boundaries for matching
+The process is launched only on administratives units along international boundaries. It can be launched on all the country's international boundaries at once, or on a single boundary.
+To extract the relevant administrative units, the border_extract tool from the data-tools repository is used.
 
-#### 1) Extract objects around a country's boundaries for matching:
+Generic command line to extract administrative units along all the country <country_code>'s international boundaries:
 ```
 python3 script/border_extract.py -c conf.json -T au -t administrative_unit_area_<level> -d <distance> <country_code> '#'
 ```
+Example of an extraction for country <country_code> along its international boundary with <country_code_neighbour>:
+```
+python3 script/border_extraction.py -c conf.json -T au -t administrative_unit_area_<level> -b <country_code_neighbour> -d <distance> <country_code>
+```
 
 <u>Belgium:</u>
-Example of an extraction around boundaries with several neighbouring countries:
+Example of an extraction around boundaries with several neighbouring countries: the first line extracts units along the be#nl boundary. In the next lines, the "-n" option indicates that the selection has to be added to the existing selection.
 ```
-python3 script/border_extraction.py -c conf.json -T au -t administrative_unit_area_<highest_level> -b nl -d <distance> <country_code>
-python3 script/border_extraction.py -c conf.json -T au -t administrative_unit_area_<highest_level> -b de -d <distance> -n <country_code>
-python3 script/border_extraction.py -c conf.json -T au -t administrative_unit_area_<highest_level> -b lu -d <distance> -n <country_code>
-```
-
-Example of an extraction around all boundaries:
-```
-python3 script/border_extraction.py -c conf.json -T au -t administrative_unit_area_5 -d 1000 be '#'
+python3 script/border_extraction.py -c conf.json -T au -t administrative_unit_area_5 -b nl -d 1000 be
+python3 script/border_extraction.py -c conf.json -T au -t administrative_unit_area_5 -b de -d 1000 -n be
+python3 script/border_extraction.py -c conf.json -T au -t administrative_unit_area_5 -b lu -d 1000 -n be
 ```
 
 ### 2) Matching
@@ -56,7 +64,7 @@ Before running the integrate, check in the log file whether invalid polygons hav
 python3 script/integrate.py -c conf.json -T au -t administrative_unit_area_<highest_level> -s 30
 ```
 
-## Step 4: edge-match administrative units at all other levels
+## Step 2: edge-match administrative units at all other levels
 Upper level administrative units are recreated by merging AUs at a lower level, using the [au_merging](https://github.com/openmapsforeurope2/au_merging) tool on each level successively. 
 
 Please note that the last complete level should be used as reference for merging. For instance, in France, level 5 does not cover the whole territory. Therefore, au.administrative_unit_area_4 will be recreated using au.administrative_unit_area_6 as reference:
