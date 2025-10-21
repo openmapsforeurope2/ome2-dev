@@ -81,6 +81,7 @@ In the same way as step 1.1, administrative units at level n are extracted along
 python3 script/border_extract.py -c conf.json -T au -t administrative_unit_area_<n> -d <distance> <country_code> '#'
 ```
 Example:
+
 <img width="375" height="290" alt="image" src="https://github.com/user-attachments/assets/5f796d67-0fef-47d2-af1d-c64945cbe3f9" />
 
 
