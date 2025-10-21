@@ -8,3 +8,5 @@
   url: "/docs/api/"
 - title: "Contribute"
   url: "/contribute/"
+- title: "User guide"
+  url: "/docs/user_guide.md"
