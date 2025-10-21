@@ -11,7 +11,7 @@ This will be done in two steps:
 
 At the end of these 3 steps, the production of the AU theme for the new country is finished.
 
-## Pre-requisites:
+## Pre-requisites
 - The country's national data has been converted to the OME2 data model and integrated in the central database.
 - Technical international boundaries have been set up with the neigbouring countries.
 
