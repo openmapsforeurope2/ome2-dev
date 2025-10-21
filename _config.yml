@@ -1,7 +1,7 @@
 ---
 title: "OME2 Documentation"
 description: "Documentation for OpenMapsForEurope OME2"
-baseurl: "/ome2-doc"
+baseurl: ""
 url: "https://openmapsforeurope2.github.io"
 theme: minima
 plugins:
