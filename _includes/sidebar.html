@@ -8,6 +8,16 @@
       {% endif %}
       <li class="{% if is_active %}active{% endif %}">
         <a href="{{ full_url }}">{{ item.title }}</a>
+        {% if item.children %}
+          <ul>
+            {% for child in item.children %}
+              {% assign child_url = child.url | relative_url %}
+              <li class="{% if page.url == child_url %}active{% endif %}">
+                <a href="{{ child_url }}">{{ child.title }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
       </li>
     {% endfor %}
   </ul>
