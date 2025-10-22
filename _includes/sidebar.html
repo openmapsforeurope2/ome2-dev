@@ -1,7 +1,7 @@
 <nav class="sidebar-nav">
   <ul>
     {% for item in site.data.navigation %}
-      {% assign full_url = item.url | prepend: site.baseurl | relative_url %}
+      {% assign full_url = item.url | relative_url %}
       {% assign is_active = false %}
       {% if page.url == full_url or page.url contains full_url %}
         {% assign is_active = true %}
