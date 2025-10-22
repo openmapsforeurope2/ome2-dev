@@ -1,2 +1,9 @@
-- title: "AU theme"
-  url: "/docs/user_guide/au_theme/user_guide_au.html"
+- title: "Add new country"
+  url: "/docs/user_guide/user_guide.html"
+  children:
+    - title: "Introduction"
+      url: "/docs/user_guide/au_theme/introduction.html"
+    - title: "AU theme"
+      url: "/docs/user_guide/au_theme/user_guide_au.html"
+    - title: "FAQ"
+      url: "/docs/user_guide/au_theme/faq.html"
