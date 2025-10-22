@@ -1,9 +1,9 @@
 - title: "Add new country"
   url: "/docs/user_guide.html"
   children:
-    - title: "Introduction"
+    - title: "Introduction TMP"
       url: "/docs/user_guide/au_theme/introduction.html"
     - title: "AU theme"
       url: "/docs/user_guide/au_theme/user_guide_au.html"
-    - title: "FAQ"
+    - title: "FAQ TMP"
       url: "/docs/user_guide/au_theme/faq.html"
