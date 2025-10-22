@@ -1,5 +1,5 @@
 - title: "Add new country"
-  url: "/docs/user_guide/user_guide.html"
+  url: "/docs/user_guide.html"
   children:
     - title: "Introduction"
       url: "/docs/user_guide/au_theme/introduction.html"
