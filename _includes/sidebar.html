@@ -1,6 +1,7 @@
 <nav class="sidebar-nav">
   <ul>
-    {% for item in site.data.navigation %}
+    {% assign nav_items = include.items | default: site.data.navigation %}
+    {% for item in nav_items %}
       {% assign full_url = item.url | relative_url %}
       {% assign is_active = false %}
       {% if page.url == full_url or page.url contains full_url %}
@@ -15,12 +16,7 @@
         </div>
         {% if item.children %}
           <ul class="submenu" style="display: none;">
-            {% for child in item.children %}
-              {% assign child_url = child.url | relative_url %}
-              <li class="{% if page.url == child_url %}active{% endif %}">
-                <a href="{{ child_url }}">{{ child.title }}</a>
-              </li>
-            {% endfor %}
+            {% include sidebar.html items=item.children %}
           </ul>
         {% endif %}
       </li>
