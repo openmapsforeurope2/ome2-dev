@@ -43,6 +43,21 @@ body{font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;margin:0;c
 .sidebar-nav a{display:block;color:#111;text-decoration:none;padding:0.35rem 0.25rem;border-radius:4px}
 .sidebar-nav li.active > a{font-weight:700;color:var(--accent);background:rgba(3,102,214,0.05)}
 
+/* Indent and style submenus */
+.sidebar-nav ul ul {
+  margin-left: 1.2em;
+  padding-left: 0.8em;
+  border-left: 2px solid #eef1f5;
+}
+.sidebar-nav ul ul li a {
+  font-size: 0.97em;
+  color: #444;
+}
+.sidebar-nav ul ul li.active > a {
+  color: var(--accent);
+  background: rgba(3,102,214,0.09);
+}
+
 /* Small-screen adjustments: keep top nav visible */
 @media (max-width:899px){
   .site-nav ul{gap:0.5rem;flex-wrap:wrap}
