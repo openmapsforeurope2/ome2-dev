@@ -4,7 +4,7 @@
   url: "/docs/user_guide.html"
   children:
     - title: "Add new country"
-      url: "/docs/user_guide/new_country/0_new_coutry.html"
+      url: "/docs/user_guide/new_country/a_new_coutry.html"
       children:
         - title: "Upload to PostGIS"
           url: "/docs/user_guide/new_country/1_upload_postgis.html"
