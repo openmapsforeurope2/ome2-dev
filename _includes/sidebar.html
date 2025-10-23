@@ -6,10 +6,15 @@
       {% if page.url == full_url or page.url contains full_url %}
         {% assign is_active = true %}
       {% endif %}
-      <li class="{% if is_active %}active{% endif %}">
-        <a href="{{ full_url }}">{{ item.title }}</a>
+      <li class="{% if is_active %}active{% endif %}{% if item.children %} has-children{% endif %}">
+        <div class="menu-header">
+          <a href="{{ full_url }}">{{ item.title }}</a>
+          {% if item.children %}
+            <button class="submenu-toggle" aria-expanded="false" aria-label="Toggle submenu"></button>
+          {% endif %}
+        </div>
         {% if item.children %}
-          <ul>
+          <ul class="submenu" style="display: none;">
             {% for child in item.children %}
               {% assign child_url = child.url | relative_url %}
               <li class="{% if page.url == child_url %}active{% endif %}">
@@ -22,3 +27,26 @@
     {% endfor %}
   </ul>
 </nav>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('.sidebar-nav .has-children').forEach(function (li) {
+    var toggle = li.querySelector('.submenu-toggle');
+    var submenu = li.querySelector('.submenu');
+    if (toggle && submenu) {
+      toggle.addEventListener('click', function (e) {
+        e.preventDefault();
+        var expanded = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', !expanded);
+        submenu.style.display = expanded ? 'none' : 'block';
+        toggle.classList.toggle('open', !expanded);
+      });
+      // Optionally: auto-expand if one of the children is active
+      if (li.classList.contains('active')) {
+        submenu.style.display = 'block';
+        toggle.setAttribute('aria-expanded', 'true');
+        toggle.classList.add('open');
+      }
+    }
+  });
+});
+</script>
