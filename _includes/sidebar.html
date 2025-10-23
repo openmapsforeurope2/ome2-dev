@@ -25,6 +25,26 @@
 </nav>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
+  // Expand all ancestor submenus of the active item(s)
+  document.querySelectorAll('.sidebar-nav li.active').forEach(function(activeLi) {
+    let parent = activeLi.parentElement;
+    while (parent && parent.classList) {
+      if (parent.classList.contains('submenu')) {
+        parent.style.display = 'block';
+        const parentLi = parent.parentElement;
+        if (parentLi) {
+          const toggle = parentLi.querySelector('.submenu-toggle');
+          if (toggle) {
+            toggle.setAttribute('aria-expanded', 'true');
+            toggle.classList.add('open');
+          }
+        }
+      }
+      parent = parent.parentElement;
+    }
+  });
+
+  // Toggle submenu on button click
   document.querySelectorAll('.sidebar-nav .has-children').forEach(function (li) {
     var toggle = li.querySelector('.submenu-toggle');
     var submenu = li.querySelector('.submenu');
@@ -36,12 +56,6 @@ document.addEventListener('DOMContentLoaded', function () {
         submenu.style.display = expanded ? 'none' : 'block';
         toggle.classList.toggle('open', !expanded);
       });
-      // Optionally: auto-expand if one of the children is active
-      if (li.classList.contains('active')) {
-        submenu.style.display = 'block';
-        toggle.setAttribute('aria-expanded', 'true');
-        toggle.classList.add('open');
-      }
     }
   });
 });
