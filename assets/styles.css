@@ -49,14 +49,14 @@ body{font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;margin:0;c
 
 /* Indentation for first-level sub-menus */
 .sidebar-nav > ul > li > ul {
-  margin-left: 0.5em !important;
+  margin-left: 1em !important;
   padding-left: 0 !important;
   border-left: 2px solid #eef1f5;
 }
 
 /* Indentation for second-level sub-menus: exactly 1em */
 .sidebar-nav > ul > li > ul > li > ul {
-  margin-left: 1em !important;
+  margin-left: 2em !important;
   padding-left: 0 !important;
   border-left: 2px solid #eef1f5;
 }
