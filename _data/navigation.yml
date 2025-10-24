@@ -4,7 +4,7 @@
   url: "/docs/user_guide.html"
   children:
     - title: "Add new country"
-      url: "/docs/user_guide/new_country/a_new_coutry.html"
+      url: "/docs/user_guide/new_country/0_new_country.html"
       children:
         - title: "Upload to PostGIS"
           url: "/docs/user_guide/new_country/1_upload_postgis.html"
@@ -15,6 +15,6 @@
         - title: "TN and HY cleaning"
           url: "/docs/user_guide/new_country/4_clean.html"
     - title: "Update country"
-      url: "/docs/user_guide/update_country/0_update_coutry.html"
+      url: "/docs/user_guide/update_country/0_update_country.html"
 - title: "Technical guide"
   url: "/docs/technical_guide.html"
