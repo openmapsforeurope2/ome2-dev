@@ -13,7 +13,7 @@
     <nav class="site-nav" aria-label="Main navigation">
       <ul>
         {% for item in site.data.navigation %}
-        <li><a href="{{ item.url | prepend: site.baseurl | relative_url }}">{{ item.title }}</a></li>
+        <li><a href="{{ item.url | relative_url }}">{{ item.title }}</a></li>
         {% endfor %}
       </ul>
     </nav>
