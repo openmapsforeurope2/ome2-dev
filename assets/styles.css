@@ -43,53 +43,6 @@ body{font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;margin:0;c
 .sidebar-nav a{display:block;color:#111;text-decoration:none;padding:0.35rem 0.25rem;border-radius:4px}
 .sidebar-nav li.active > a{font-weight:700;color:var(--accent);background:rgba(3,102,214,0.05)}
 
-/* Indent and style submenus */
-.sidebar-nav ul ul {
-  margin-left: 1.2em;
-  padding-left: 0.8em;
-  border-left: 2px solid #eef1f5;
-}
-.sidebar-nav ul ul li a {
-  font-size: 0.97em;
-  color: #444;
-}
-.sidebar-nav ul ul li.active > a {
-  color: var(--accent);
-  background: rgba(3,102,214,0.09);
-}
-
-/* Small-screen adjustments: keep top nav visible */
-@media (max-width:899px){
-  .site-nav ul{gap:0.5rem;flex-wrap:wrap}
-  .site-nav a{padding:0.35rem 0.5rem}
-  .content{padding:1rem}
-}
-
-.menu-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.submenu-toggle {
-  background: none;
-  border: none;
-  cursor: pointer;
-  width: 1.5em;
-  height: 1.5em;
-  margin-left: 0.5em;
-  padding: 0;
-  position: relative;
-}
-.submenu-toggle::before {
-  content: "▶";
-  display: inline-block;
-  font-size: 1em;
-  transition: transform 0.2s;
-}
-.submenu-toggle.open::before {
-  transform: rotate(90deg);
-}
 /* Sidebar sub-menu indentation by level */
 .sidebar-nav > ul > li > ul {
   margin-left: 0.5em;
@@ -109,9 +62,41 @@ body{font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;margin:0;c
   padding-left: 0;
   border-left: none;
 }
-.sidebar-nav .sidebar-list > li > .menu-header > a {
+
+/* Sub-menu font size and color adjustments */
+.sidebar-nav ul ul li a {
+  font-size: 0.97em;
+  color: #444;
+}
+.sidebar-nav ul ul li.active > a {
+  color: var(--accent);
+  background: rgba(3,102,214,0.09);
+}
+
+/* Top-level menu entries in bold */
+.sidebar-nav > ul > li > .menu-header > a {
   font-weight: bold;
 }
-.sidebar-nav .submenu .menu-header > a {
+
+/* All submenus in normal font */
+.sidebar-nav ul ul .menu-header > a {
   font-weight: normal;
+}
+
+/* Small-screen adjustments: keep top nav visible */
+@media (max-width:899px){
+  .site-nav ul{gap:0.5rem;flex-wrap:wrap}
+  .site-nav a{padding:0.35rem 0.5rem}
+  .content{padding:1rem}
+}
+
+.menu-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Remove submenu toggle styles since not used */
+.submenu-toggle {
+  display: none;
 }
