@@ -32,7 +32,6 @@ body{font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;margin:0;c
     max-width:none;
     width:100%;
   }
-
   /* hide top nav on wide screens */
   .site-nav{display:none}
 }
@@ -49,23 +48,23 @@ body{font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;margin:0;c
 
 /* Indentation for first-level sub-menus */
 .sidebar-nav > ul > li > ul {
-  margin-left: 0.5em !important;
-  padding-left: 0 !important;
+  margin-left: 0.5em;
+  padding-left: 0;
   border-left: 2px solid #eef1f5;
 }
 
 /* Indentation for second-level sub-menus: exactly 1em */
 .sidebar-nav > ul > li > ul > li > ul {
-  margin-left: 1em !important;
-  padding-left: 0 !important;
+  margin-left: 1em;
+  padding-left: 0;
   border-left: 2px solid #eef1f5;
 }
 
 /* Remove indentation from all deeper levels */
 .sidebar-nav > ul > li > ul > li > ul > li > ul {
-  margin-left: 0 !important;
-  padding-left: 0 !important;
-  border-left: none !important;
+  margin-left: 0;
+  padding-left: 0;
+  border-left: none;
 }
 
 /* Top-level menu entries: bold and dark blue */
@@ -75,28 +74,7 @@ body{font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;margin:0;c
   color: var(--mainmenu);
 }
 
-/* First-level sub-menus: red, normal font */
-.sidebar-nav > ul > li > ul > li > .menu-header > a {
-  font-weight: normal;
-  font-style: normal;
-  color: red;
-}
-
-/* Second-level sub-menus: italic, normal weight, dark gray */
-.sidebar-nav > ul > li > ul > li > ul > li > .menu-header > a {
-  font-style: italic;
-  font-weight: normal;
-  color: #444;
-}
-
-/* Remove inherited bold/italic/color for deeper levels */
-.sidebar-nav > ul > li > ul > li > ul > li > ul .menu-header > a {
-  font-style: normal;
-  font-weight: normal;
-  color: #444;
-}
-
-/* Sub-menu font size and color adjustments */
+/* Sub-menu font size and color adjustments (general) */
 .sidebar-nav ul ul li a {
   font-size: 0.97em;
   color: #444;
@@ -110,6 +88,27 @@ body{font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;margin:0;c
 .sidebar-nav > ul > li > ul .menu-header > a {
   font-weight: normal;
   font-style: normal;
+}
+
+/* --- FIX: FIRST-LEVEL SUBMENU ENTRIES IN RED --- */
+.sidebar-nav > ul > li > ul > li > .menu-header > a {
+  color: red !important;
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Second-level sub-menus: italic, normal weight, dark gray */
+.sidebar-nav > ul > li > ul > li > ul > li > .menu-header > a {
+  font-style: italic;
+  font-weight: normal;
+  color: #444 !important;
+}
+
+/* Remove inherited bold/italic/color for deeper levels */
+.sidebar-nav > ul > li > ul > li > ul > li > ul .menu-header > a {
+  font-style: normal;
+  font-weight: normal;
+  color: #444 !important;
 }
 
 /* Small-screen adjustments: keep top nav visible */
