@@ -41,42 +41,43 @@ body{font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;margin:0;c
 .sidebar-nav ul{list-style:none;margin:0;padding:0}
 .sidebar-nav li{margin:0 0 0.25rem}
 .sidebar-nav a{display:block;color:#111;text-decoration:none;padding:0.35rem 0.25rem;border-radius:4px}
-.sidebar-nav li.active > a{font-weight:700;color:var(--accent);background:rgba(3,102,214,0.05)}
+.sidebar-nav li.active > a{
+  color:var(--accent);
+  background:rgba(3,102,214,0.05);
+  font-weight:700;
+}
 
 /* Indentation for first-level sub-menus */
 .sidebar-nav > ul > li > ul {
-  margin-left: 0.5em;
-  padding-left: 0.5em;
+  margin-left: 0.5em !important;
+  padding-left: 0 !important;
   border-left: 2px solid #eef1f5;
 }
 
-/* Indentation for second-level sub-menus: override first-level indent */
+/* Indentation for second-level sub-menus: exactly 1em */
 .sidebar-nav > ul > li > ul > li > ul {
   margin-left: 1em !important;
-  padding-left: 1em !important;
+  padding-left: 0 !important;
   border-left: 2px solid #eef1f5;
 }
 
-/* Remove inherited indentation from first level for second level */
-.sidebar-nav > ul > li > ul > li > ul {
-  margin-left: 1em;
-  padding-left: 1em;
-}
-.sidebar-nav > ul > li > ul > li > ul {
-  /* Remove parent border if not desired */
+/* Remove indentation from all deeper levels */
+.sidebar-nav > ul > li > ul > li > ul > li > ul {
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+  border-left: none !important;
 }
 
-/* Italic for second-level sub-menu links */
+/* Italic and normal weight for second-level links only */
 .sidebar-nav > ul > li > ul > li > ul .menu-header > a {
   font-style: italic !important;
-  font-weight: normal;
+  font-weight: normal !important;
 }
 
-/* Remove extra indentation for deeper levels */
-.sidebar-nav ul ul ul ul {
-  margin-left: 0;
-  padding-left: 0;
-  border-left: none;
+/* Remove inherited bold/italic for deeper levels */
+.sidebar-nav > ul > li > ul > li > ul > li > ul .menu-header > a {
+  font-style: normal !important;
+  font-weight: normal !important;
 }
 
 /* Sub-menu font size and color adjustments */
@@ -95,8 +96,8 @@ body{font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;margin:0;c
   font-style: normal;
 }
 
-/* All submenus in normal font except second-level which is italic by rule above */
-.sidebar-nav ul ul .menu-header > a {
+/* All first-level submenus in normal font */
+.sidebar-nav > ul > li > ul .menu-header > a {
   font-weight: normal;
   font-style: normal;
 }
