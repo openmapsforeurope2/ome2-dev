@@ -80,15 +80,7 @@ body{font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;margin:0;c
   font-weight: normal !important;
 }
 
-/* Sub-menu font size and color adjustments */
-.sidebar-nav ul ul li a {
-  font-size: 0.97em;
-  color: #444;
-}
-.sidebar-nav ul ul li.active > a {
-  color: var(--accent);
-  background: rgba(3,102,214,0.09);
-}
+
 
 /* Top-level menu entries in bold and dark blue */
 .sidebar-nav > ul > li > .menu-header > a {
@@ -119,4 +111,13 @@ body{font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;margin:0;c
 /* Remove submenu toggle styles since not used */
 .submenu-toggle {
   display: none;
+}
+/* Sub-menu font size and color adjustments */
+.sidebar-nav ul ul li a {
+  font-size: 0.97em;
+  color: #af1515;
+}
+.sidebar-nav ul ul li.active > a {
+  color: var(--accent);
+  background: rgba(3,102,214,0.09);
 }
