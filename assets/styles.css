@@ -66,13 +66,6 @@ body{font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;margin:0;c
   font-size: 0.97em;
 }
 
-/* Small-screen adjustments */
-@media (max-width:899px){
-  .site-nav ul{gap:0.5rem;flex-wrap:wrap}
-  .site-nav a{padding:0.35rem 0.5rem}
-  .content{padding:1rem}
-}
-
 .menu-header {
   display: flex;
   align-items: center;
@@ -85,10 +78,17 @@ body{font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;margin:0;c
 
 /* === SIDEBAR MENU COLOR/FONT FIXES (Place these at the very end) === */
 
-/* Top-level menu: bold, dark blue */
+/* Reset all menu links to normal by default */
+.sidebar-nav .menu-header > a {
+  color: #444 !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+}
+
+/* Top-level menu: bold, dark blue (only direct children of sidebar-nav > ul) */
 .sidebar-nav > ul > li > .menu-header > a {
-  font-weight: bold !important;
   color: var(--mainmenu, #003366) !important;
+  font-weight: bold !important;
   font-style: normal !important;
 }
 
@@ -111,4 +111,11 @@ body{font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;margin:0;c
   color: #444 !important;
   font-style: normal !important;
   font-weight: normal !important;
+}
+
+/* Small-screen adjustments */
+@media (max-width:899px){
+  .site-nav ul{gap:0.5rem;flex-wrap:wrap}
+  .site-nav a{padding:0.35rem 0.5rem}
+  .content{padding:1rem}
 }
