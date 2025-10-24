@@ -10,12 +10,9 @@
       <li class="{% if is_active %}active{% endif %}{% if item.children %} has-children{% endif %}">
         <div class="menu-header">
           <a href="{{ full_url }}">{{ item.title }}</a>
-          {% if item.children %}
-            <button class="submenu-toggle" aria-expanded="false" aria-label="Toggle submenu"></button>
-          {% endif %}
         </div>
         {% if item.children %}
-          <ul class="submenu" style="display: none;">
+          <ul class="submenu">
             {% include sidebar.html items=item.children %}
           </ul>
         {% endif %}
@@ -23,40 +20,3 @@
     {% endfor %}
   </ul>
 </nav>
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-  // Expand all ancestor submenus of the active item(s)
-  document.querySelectorAll('.sidebar-nav li.active').forEach(function(activeLi) {
-    let parent = activeLi.parentElement;
-    while (parent && parent.classList) {
-      if (parent.classList.contains('submenu')) {
-        parent.style.display = 'block';
-        const parentLi = parent.parentElement;
-        if (parentLi) {
-          const toggle = parentLi.querySelector('.submenu-toggle');
-          if (toggle) {
-            toggle.setAttribute('aria-expanded', 'true');
-            toggle.classList.add('open');
-          }
-        }
-      }
-      parent = parent.parentElement;
-    }
-  });
-
-  // Toggle submenu on button click
-  document.querySelectorAll('.sidebar-nav .has-children').forEach(function (li) {
-    var toggle = li.querySelector('.submenu-toggle');
-    var submenu = li.querySelector('.submenu');
-    if (toggle && submenu) {
-      toggle.addEventListener('click', function (e) {
-        e.preventDefault();
-        var expanded = toggle.getAttribute('aria-expanded') === 'true';
-        toggle.setAttribute('aria-expanded', !expanded);
-        submenu.style.display = expanded ? 'none' : 'block';
-        toggle.classList.toggle('open', !expanded);
-      });
-    }
-  });
-});
-</script>
