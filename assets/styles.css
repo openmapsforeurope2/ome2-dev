@@ -130,3 +130,30 @@ body{font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;margin:0;c
   font-weight: normal !important;
   color: #444 !important;
 }
+
+/* Top-level links: bold, dark blue */
+.sidebar-nav > ul > li > .menu-header > a {
+  font-weight: bold;
+  color: var(--mainmenu, #003366);
+}
+
+/* First-level submenu links: red, normal font */
+.sidebar-nav > ul > li > ul.submenu > li > .menu-header > a {
+  color: red !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+}
+
+/* Second-level submenu links: italic, gray */
+.sidebar-nav > ul > li > ul.submenu > li > ul.submenu > li > .menu-header > a {
+  color: #444 !important;
+  font-style: italic !important;
+  font-weight: normal !important;
+}
+
+/* Reset styles for third-level and deeper */
+.sidebar-nav > ul > li > ul.submenu > li > ul.submenu > li > ul.submenu > li > .menu-header > a {
+  color: #444 !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+}
