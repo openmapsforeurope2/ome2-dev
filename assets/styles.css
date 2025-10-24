@@ -1,4 +1,4 @@
-:root{--accent:#0366d6;--bg:#fff}
+:root{--accent:#0366d6;--bg:#fff; --mainmenu:#003366;}
 body{font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;margin:0;color:#222;background:var(--bg);-webkit-font-smoothing:antialiased}
 .site-header{display:flex;align-items:center;justify-content:space-between;padding:0.5rem 1rem;background:#f7f7f7;border-bottom:1px solid #e1e4e8;position:sticky;top:0;z-index:20}
 .brand{font-weight:600;color:var(--accent);text-decoration:none}
@@ -49,14 +49,14 @@ body{font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;margin:0;c
 
 /* Indentation for first-level sub-menus */
 .sidebar-nav > ul > li > ul {
-  margin-left: 1em !important;
+  margin-left: 0.5em !important;
   padding-left: 0 !important;
   border-left: 2px solid #eef1f5;
 }
 
 /* Indentation for second-level sub-menus: exactly 1em */
 .sidebar-nav > ul > li > ul > li > ul {
-  margin-left: 2em !important;
+  margin-left: 1em !important;
   padding-left: 0 !important;
   border-left: 2px solid #eef1f5;
 }
@@ -69,7 +69,7 @@ body{font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;margin:0;c
 }
 
 /* Italic and normal weight for second-level links only */
-.sidebar-nav > ul > li > ul > li > ul .menu-header > a {
+.sidebar-nav > ul > li > ul > li > ul > li > .menu-header > a {
   font-style: italic !important;
   font-weight: normal !important;
 }
@@ -90,10 +90,11 @@ body{font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;margin:0;c
   background: rgba(3,102,214,0.09);
 }
 
-/* Top-level menu entries in bold */
+/* Top-level menu entries in bold and dark blue */
 .sidebar-nav > ul > li > .menu-header > a {
   font-weight: bold;
   font-style: normal;
+  color: var(--mainmenu) !important;
 }
 
 /* All first-level submenus in normal font */
@@ -118,9 +119,4 @@ body{font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;margin:0;c
 /* Remove submenu toggle styles since not used */
 .submenu-toggle {
   display: none;
-}
-/* Force second submenu level links to italic */
-.sidebar-nav > ul > li > ul > li > ul > li > .menu-header > a {
-  font-style: italic !important;
-  font-weight: normal !important;
 }
