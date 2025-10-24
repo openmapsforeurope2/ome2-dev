@@ -85,29 +85,29 @@ body{font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;margin:0;c
   font-style: normal !important;
 }
 
-/* Top-level menu: bold, dark blue (only direct children of sidebar-nav > ul) */
-.sidebar-nav > ul > li > .menu-header > a {
+/* Top-level menu: bold, dark blue (only direct children of sidebar > .sidebar-nav > ul) */
+.sidebar > .sidebar-nav > ul > li > .menu-header > a {
   color: var(--mainmenu, #003366) !important;
   font-weight: bold !important;
   font-style: normal !important;
 }
 
 /* First sub-level: red, not bold, not italic */
-.sidebar-nav > ul > li > ul.submenu > li > .menu-header > a {
+.sidebar > .sidebar-nav > ul > li > ul.submenu > .sidebar-nav > ul > li > .menu-header > a {
   color: red !important;
   font-weight: normal !important;
   font-style: normal !important;
 }
 
 /* Second sub-level: italic, gray */
-.sidebar-nav > ul > li > ul.submenu > li > ul.submenu > li > .menu-header > a {
+.sidebar > .sidebar-nav > ul > li > ul.submenu > .sidebar-nav > ul > li > ul.submenu > .sidebar-nav > ul > li > .menu-header > a {
   color: #444 !important;
   font-style: italic !important;
   font-weight: normal !important;
 }
 
 /* Third level and deeper: gray, not italic, not bold */
-.sidebar-nav > ul > li > ul.submenu > li > ul.submenu > li > ul.submenu > li > .menu-header > a {
+.sidebar > .sidebar-nav > ul > li > ul.submenu > .sidebar-nav > ul > li > ul.submenu > .sidebar-nav > ul > li > ul.submenu > .sidebar-nav > ul > li > .menu-header > a {
   color: #444 !important;
   font-style: normal !important;
   font-weight: normal !important;
