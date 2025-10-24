@@ -90,27 +90,6 @@ body{font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;margin:0;c
   font-style: normal;
 }
 
-/* --- FIX: FIRST-LEVEL SUBMENU ENTRIES IN RED --- */
-.sidebar-nav > ul > li > ul > li > .menu-header > a {
-  color: red !important;
-  font-weight: normal;
-  font-style: normal;
-}
-
-/* Second-level sub-menus: italic, normal weight, dark gray */
-.sidebar-nav > ul > li > ul > li > ul > li > .menu-header > a {
-  font-style: italic;
-  font-weight: normal;
-  color: #444 !important;
-}
-
-/* Remove inherited bold/italic/color for deeper levels */
-.sidebar-nav > ul > li > ul > li > ul > li > ul .menu-header > a {
-  font-style: normal;
-  font-weight: normal;
-  color: #444 !important;
-}
-
 /* Small-screen adjustments: keep top nav visible */
 @media (max-width:899px){
   .site-nav ul{gap:0.5rem;flex-wrap:wrap}
@@ -127,4 +106,27 @@ body{font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;margin:0;c
 /* Remove submenu toggle styles since not used */
 .submenu-toggle {
   display: none;
+}
+
+/* --- FINAL COLOR FIXES: Place these at the end! --- */
+
+/* First-level sub-menu entries in red */
+.sidebar-nav > ul > li > ul > li > .menu-header > a {
+  color: red !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+}
+
+/* Second-level sub-menus: italic, normal weight, dark gray */
+.sidebar-nav > ul > li > ul > li > ul > li > .menu-header > a {
+  font-style: italic !important;
+  font-weight: normal !important;
+  color: #444 !important;
+}
+
+/* Remove inherited bold/italic/color for deeper levels */
+.sidebar-nav > ul > li > ul > li > ul > li > ul .menu-header > a {
+  font-style: normal !important;
+  font-weight: normal !important;
+  color: #444 !important;
 }
