@@ -50,10 +50,14 @@ body{font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;margin:0;c
   border-left: 2px solid #eef1f5;
 }
 
+/* Second-level sub-menus: 1em indent and italic */
 .sidebar-nav > ul > li > ul > li > ul {
   margin-left: 1em;
   padding-left: 1em;
   border-left: 2px solid #eef1f5;
+}
+.sidebar-nav > ul > li > ul > li > ul .menu-header > a {
+  font-style: italic;
 }
 
 /* Remove extra indentation for deeper levels */
@@ -78,9 +82,10 @@ body{font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;margin:0;c
   font-weight: bold;
 }
 
-/* All submenus in normal font */
+/* All submenus in normal font except second-level which is italic by rule above */
 .sidebar-nav ul ul .menu-header > a {
   font-weight: normal;
+  font-style: normal;
 }
 
 /* Small-screen adjustments: keep top nav visible */
