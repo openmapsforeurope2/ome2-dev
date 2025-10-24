@@ -90,11 +90,24 @@ body{font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;margin:0;c
 .submenu-toggle.open::before {
   transform: rotate(90deg);
 }
-.sidebar-nav ul ul {
-  margin-left: 1.2em;
-  padding-left: 0.8em;
+/* Sidebar sub-menu indentation by level */
+.sidebar-nav > ul > li > ul {
+  margin-left: 0.5em;
+  padding-left: 0.5em;
   border-left: 2px solid #eef1f5;
-  transition: max-height 0.2s, opacity 0.2s;
+}
+
+.sidebar-nav > ul > li > ul > li > ul {
+  margin-left: 1em;
+  padding-left: 1em;
+  border-left: 2px solid #eef1f5;
+}
+
+/* Remove extra indentation for deeper levels */
+.sidebar-nav ul ul ul ul {
+  margin-left: 0;
+  padding-left: 0;
+  border-left: none;
 }
 .sidebar-nav .sidebar-list > li > .menu-header > a {
   font-weight: bold;
