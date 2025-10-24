@@ -8,7 +8,7 @@ body{font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;margin:0;c
 .site-footer{padding:1rem;text-align:center;color:#666;border-top:1px solid #eee;margin-top:2rem}
 
 /* Page layout + sidebar */
-.page-wrap{display:block} /* default for small screens */
+.page-wrap{display:block}
 .sidebar{display:none}
 
 /* Sidebar styling for wide screens */
@@ -20,7 +20,7 @@ body{font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;margin:0;c
     min-width:220px;
     max-width:300px;
     position:sticky;
-    top:60px; /* below header */
+    top:60px;
     height:calc(100vh - 60px);
     overflow:auto;
     padding:1rem;
@@ -32,11 +32,9 @@ body{font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;margin:0;c
     max-width:none;
     width:100%;
   }
-  /* hide top nav on wide screens */
   .site-nav{display:none}
 }
 
-/* Sidebar list */
 .sidebar-nav ul{list-style:none;margin:0;padding:0}
 .sidebar-nav li{margin:0 0 0.25rem}
 .sidebar-nav a{display:block;color:#111;text-decoration:none;padding:0.35rem 0.25rem;border-radius:4px}
@@ -46,7 +44,7 @@ body{font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;margin:0;c
   font-weight:700;
 }
 
-/* Indentation for sub-menus */
+/* Sidebar submenu indentation */
 .sidebar-nav .submenu {
   margin-left: 0.5em;
   border-left: 2px solid #eef1f5;
@@ -63,47 +61,12 @@ body{font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;margin:0;c
   padding-left: 0;
 }
 
-/* Top-level menu entries: bold and dark blue */
-.sidebar-nav > ul > li > .menu-header > a {
-  font-weight: bold;
-  font-style: normal;
-  color: var(--mainmenu, #003366);
-}
-
-/* General sub-menu style: normal font, gray */
-.sidebar-nav .submenu .menu-header > a {
-  font-weight: normal;
-  font-style: normal;
-  color: #444;
-}
-
-/* 1st-level submenu: red */
-.sidebar-nav > ul > li > ul.submenu > li > .menu-header > a {
-  color: red !important;
-  font-weight: normal !important;
-  font-style: normal !important;
-}
-
-/* 2nd-level submenu: italic, gray */
-.sidebar-nav > ul > li > ul.submenu > li > ul.submenu > li > .menu-header > a {
-  color: #444 !important;
-  font-style: italic !important;
-  font-weight: normal !important;
-}
-
-/* 3rd-level and deeper: normal, gray */
-.sidebar-nav > ul > li > ul.submenu > li > ul.submenu > li > ul.submenu > li > .menu-header > a {
-  color: #444 !important;
-  font-style: normal !important;
-  font-weight: normal !important;
-}
-
 /* Sub-menu font size adjustment */
 .sidebar-nav .submenu a {
   font-size: 0.97em;
 }
 
-/* Small-screen adjustments: keep top nav visible */
+/* Small-screen adjustments */
 @media (max-width:899px){
   .site-nav ul{gap:0.5rem;flex-wrap:wrap}
   .site-nav a{padding:0.35rem 0.5rem}
@@ -116,7 +79,36 @@ body{font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;margin:0;c
   justify-content: space-between;
 }
 
-/* Remove submenu toggle styles since not used */
 .submenu-toggle {
   display: none;
+}
+
+/* === SIDEBAR MENU COLOR/FONT FIXES (Place these at the very end) === */
+
+/* Top-level menu: bold, dark blue */
+.sidebar-nav > ul > li > .menu-header > a {
+  font-weight: bold !important;
+  color: var(--mainmenu, #003366) !important;
+  font-style: normal !important;
+}
+
+/* First sub-level: red, not bold, not italic */
+.sidebar-nav > ul > li > ul.submenu > li > .menu-header > a {
+  color: red !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+}
+
+/* Second sub-level: italic, gray */
+.sidebar-nav > ul > li > ul.submenu > li > ul.submenu > li > .menu-header > a {
+  color: #444 !important;
+  font-style: italic !important;
+  font-weight: normal !important;
+}
+
+/* Third level and deeper: gray, not italic, not bold */
+.sidebar-nav > ul > li > ul.submenu > li > ul.submenu > li > ul.submenu > li > .menu-header > a {
+  color: #444 !important;
+  font-style: normal !important;
+  font-weight: normal !important;
 }
