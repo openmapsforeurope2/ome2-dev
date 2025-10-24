@@ -118,7 +118,8 @@ The administrative_hierarchy table is a table without geometry which describes t
 When a new country is added to the HVLSP, the relevant rows need to be retrieved from EBM_ISN and integrated into au.administrative_hierarchy.
 This is currently done with an FME workbench: [AU_manage_administrative_hierarchy.fmw](https://github.com/openmapsforeurope2/fme_workbenches/tree/main/AU). The path to the latest EBM file gdb (locally on the user's computer), the connection information to the HVLSP database and a list of countries to integrate need to be provided.
 
-WARNINGS:
-- In the final infrastructure, it will probably not be possible to connect FME directly to the HVLSP database.
-- This workbench does not handle updates, it only adds rows to the administrative_hierarchy table but does not update existing rows if the processed country had already been included before.
-Therefore, a more permanent solution needs to be determined: cf.issue #16
+_WARNING:_ 
+> - _in the final infrastructure, it will probably not be possible to connect FME directly to the HVLSP database._
+> - _this workbench does not handle updates, it only adds rows to the administrative_hierarchy table but does not update existing rows if the processed country had already been included before._
+> 
+> _Therefore, a more permanent solution needs to be determined: cf.[issue #16](https://github.com/openmapsforeurope2/OME2/issues/16)_
