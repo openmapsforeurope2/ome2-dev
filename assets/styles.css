@@ -94,7 +94,7 @@ body{font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;margin:0;c
 
 /* First sub-level: red, not bold, not italic */
 .sidebar > .sidebar-nav > ul > li > ul.submenu > .sidebar-nav > ul > li > .menu-header > a {
-  color: red !important;
+  color: #003366 !important;
   font-weight: normal !important;
   font-style: normal !important;
 }
