@@ -68,32 +68,32 @@ body{font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;margin:0;c
   border-left: none !important;
 }
 
-/* Top-level menu entries in bold and dark blue */
+/* Top-level menu entries: bold and dark blue */
 .sidebar-nav > ul > li > .menu-header > a {
   font-weight: bold;
   font-style: normal;
-  color: var(--mainmenu) !important;
+  color: var(--mainmenu);
 }
 
-/* First-level sub-menus in red, normal font */
+/* First-level sub-menus: red, normal font */
 .sidebar-nav > ul > li > ul > li > .menu-header > a {
-  color: red !important;
   font-weight: normal;
   font-style: normal;
+  color: red;
 }
 
-/* Italic and normal weight for second-level links only */
+/* Second-level sub-menus: italic, normal weight, dark gray */
 .sidebar-nav > ul > li > ul > li > ul > li > .menu-header > a {
-  font-style: italic !important;
-  font-weight: normal !important;
-  color: #444 !important; /* You can set to another color if desired */
+  font-style: italic;
+  font-weight: normal;
+  color: #444;
 }
 
-/* Remove inherited bold/italic for deeper levels */
+/* Remove inherited bold/italic/color for deeper levels */
 .sidebar-nav > ul > li > ul > li > ul > li > ul .menu-header > a {
-  font-style: normal !important;
-  font-weight: normal !important;
-  color: #444 !important;
+  font-style: normal;
+  font-weight: normal;
+  color: #444;
 }
 
 /* Sub-menu font size and color adjustments */
