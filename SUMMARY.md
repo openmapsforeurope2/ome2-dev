@@ -1,6 +1,6 @@
 # Summary
 
-* [OME2](README.md)
+* [User guide](README.md)
 * [Add new country](docs/user_guide/new_country/0_new_country.md)
   * [Upload to PostGIS](docs/user_guide/new_country/1_upload_postgis.md)
   * [Model conversion](docs/user_guide/new_country/2_model_conversion.md)
