@@ -13,7 +13,8 @@ The Open Maps for Europe 2 (OME2) project is co-funded by the European Union. It
 OME2 is developing a new production process and technical specification for free-to-use, edge-matched data under a single open licence. Authoritative 1:10 000 scale data for 10 countries will be delivered via the user interface built by the award-winning Open Maps For Europe Project. OME2 is also enhancing the five existing Open Maps For Europe datasets, including the pilot Open Cadastral Map. By the end of the year, it will offer coverage for 10 countries to provide a foundation for future pan-European high-value datasets. 
 
 This github project is used to host the source code of the tools which constitute the new production process for a high-value large-scale pan-European database:
-<img src="../user_guide/docs/images/Process_nice_EN.png" width="500" height="auto">
+
+<img src="../user_guide/docs/images/Process_nice_EN.png" width="auto" height="auto">
 
 The first step of the production process consists in collecting open datasets covering 3 themes (Administrative units, Transport network and Hydrography) from NMCAs (National Mapping and Cartographic Agencies) members of EuroGeographics. In a second step, a number of tools are applied to the data to transform it to the OME2 large-scale data model and ensure consistent edge-matching along international boundaries:
 * [data-model-transformer](https://github.com/openmapsforeurope2/data-model-transformer) : transform national PostgreSQL databases into the OME2 data model implemented in PostgreSQL (model conversion tool). 
