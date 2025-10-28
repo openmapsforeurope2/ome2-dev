@@ -1,4 +1,4 @@
-![Logo](user_guide/docs/images/logo_ome2.png)
+![Logo](../user_guide/docs/images/logo_ome2.png)
 
 Under construction
 
