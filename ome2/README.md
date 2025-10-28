@@ -2,7 +2,7 @@
 
 Under construction
 
-The OME2 project is co-funded by the European Union. It is being delivered by a consortium comprising: 
+The Open Maps for Europe 2 (OME2) project is co-funded by the European Union. It is being delivered by a consortium comprising: 
 * EuroGeographics, the not-for-profit membership association for Europe’s National Mapping, Cadastral and Land Registration Authorities;
 * National Geographic Institute, Belgium;
 * National Institute of Geographic and Forest Information, France;
