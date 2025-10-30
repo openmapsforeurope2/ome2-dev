@@ -52,7 +52,7 @@ Since we are working on the BE#NL international boundary, all lines which do not
 ## Step 1.2 (manual): Clean the outer edges to keep only BE#NL data 
 
 #### Input:
-- public._intbnd1_ lines_corrected (before correction)
+- public._intbnd1_lines_corrected (before correction)
 
 #### Steps to be performed (in QGIS for example):
 1.	Manually delete the lines which do not correspond to the BE#NL boundary (coastlines, boundaries with other countries, Belgian enclaves in Germany). To do that in QGIS you can:
@@ -61,6 +61,33 @@ Since we are working on the BE#NL international boundary, all lines which do not
 2.	If necessary, snap the endpoints of the two lines representing the BE and NL version of the main international boundary (for the test, it was necessary on the junction with Germany). If the neighbouring boundaries are already edge-matched, there should be an international_boundary_node object which should be used as reference (or updated if necessary). Otherwise, the endpoints should be snapped approximately in the middle of the space separating them (the distance is usually very small so the precise location is not very important).
 3.	If there is no international_boundary_node object at the location of the new intersection, create one and fill its country_code attribute with the country codes of all intersecting countries, in alphabetical order and separated by a hash sign (#).
 
+| Initial state    | After correction |
+|-------------------|------------------|
+|<img width="441" height="281" alt="image" src="https://github.com/user-attachments/assets/a49fd4be-8c9b-473a-aa59-0d120636c3b7" /> | <img width="385" height="288" alt="image" src="https://github.com/user-attachments/assets/ecdb6036-3da3-44f7-b4b2-79814392f312" /> |
+
+#### Output:
+- public._intbnd1_lines_corrected (corrected version)
+- ib._international_boundary_node
+<img width="893" height="310" alt="image" src="https://github.com/user-attachments/assets/37709ce7-7386-43bf-ab1c-71399a37ff50" />
+
+## Step 2.1 (FME): Create polygons wherever the two versions of the boundary differ 
+#### Input:
+•	public._intbnd1_lines_corrected (corrected version)
+#### TO-DO in FME:
+- Enable only the _intbnd1_lines_corrected feature type (it is located on the left-hand side of the workbench, near step 3). 
+- Enable the link between _intbnd1_lines_corrected and the AttributeRemover tranformer in section Step 2.1.
+- Then run the workbench.
+- Disable the link between _intbnd1_lines_corrected and the AttributeRemover tranformer in section Step 2.1.
+#### Steps description:
+Generate polygons from the input table  all in-dispute areas between the two boundaries are transformed into polygons. However, this also creates polygons inside enclaves, which need to be deleted before the next step because they are not needed to generate the common boundary.
+<img width="945" height="175" alt="image" src="https://github.com/user-attachments/assets/564e5ee9-6ce8-408d-ac61-92b467cfb949" />
+
+#### Output:
+- public._intbnd2_polygons (backup copy)
+- public._intbnd2_polygons (to be corrected in the next step).
+- public._intbnd2_agreed_lines
+
+<img width="878" height="436" alt="image" src="https://github.com/user-attachments/assets/f5fc786f-6af5-4a54-9039-f2f341bd824c" />
 
 
 
