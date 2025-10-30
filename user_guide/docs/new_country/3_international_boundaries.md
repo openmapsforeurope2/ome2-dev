@@ -89,6 +89,137 @@ Generate polygons from the input table  all in-dispute areas between the two 
 
 <img width="878" height="436" alt="image" src="https://github.com/user-attachments/assets/f5fc786f-6af5-4a54-9039-f2f341bd824c" />
 
+## Step 2.2 (manual): Delete polygons corresponding to enclaves 
+#### Input:
+- public._intbnd2_polygons_corrected (before correction).
+#### Steps to be performed:
+Delete all enclaves i.e. all the polygons inside which we shouldn’t calculate a new boundary.
+#### Output:
+- public._intbnd2_polygons_corrected (corrected version).
+<img width="698" height="445" alt="image" src="https://github.com/user-attachments/assets/ae00d5c8-18b3-45fb-a029-4effb09ff69e" />
+
+## Step 3 (FME): Generate skeletons (~centerlines) from the boundary polygons
+#### Input:
+- public._intbnd2_polygons_corrected (corrected version).
+- public._intbnd1_lines_corrected (corrected version).
+#### TO-DO in FME:
+- Enable only the _intbnd2_polygons_corrected feature type.
+- Enable _intbnd1_lines_corrected (near Step 3).
+- Enable the link between _intbnd1_lines_corrected and the LineOnAreaOverlayer transformer in section Step 3.
+- Make sure link between _intbnd1_lines_corrected and the AttributeRemover transformer (in section Step 2.1) is disabled.
+- Run workbench.
+- Disable the link between _intbnd1_lines_corrected and the LineOnAreaOverlayer transformer in section Step 3.
+
+#### Steps description:
+1.	Retrieve lines which did not generate polygons: this situation occurs when the two original country polygons actually share a boundary. To do that, the workbench looks for lines from _intbnd1_lines_corrected which do not overlap the polygons created above (_intbnd2_polugons_corrected). Such segments are stored in _intbnd3_agreed_lines and will be added to the final boundary table at the end of the process. 
+2.	Generate the skeletons of all polygons from the corrected table.
+3.	Use Intersector to planarize the resulting lines.
+4.	Manage attributes to keep only the information needed for OME2.
+<img width="945" height="190" alt="image" src="https://github.com/user-attachments/assets/a2abf218-1f0c-4664-ad9e-6328f6df24b2" />
+
+#### Output:
+- public._intbnd3_skeleton (backup copy).
+<img width="678" height="372" alt="image" src="https://github.com/user-attachments/assets/f7af85f3-96f8-471f-a2a1-13820330bbec" />
+
+From these skeletons, we want to extract the main central line i.e. eliminate all small objects growing out of the central line.
+
+## Step 4.1 (FME): Identify irrelevant lines to be deleted
+The lines to be kept answer to the following characteristics:
+-	Either they do not intersect _intbnd1_lines_corrected at all (represented as blue dashed lines in the following pictures),
+-	OR they intersect at least three objects from _intbnd1_lines_corrected,
+-	OR they are located at the very end of the main international boundary line and therefore intersect an object from ib.international_boundary_node.
+
+| Skeleton line intersecting no boundary line | Skeleton line intersecting 4 boundary lines | Skeleton line intersecting 3 boundary lines |
+|---------------------------------------------|---------------------------------------------|---------------------------------------------|
+|<img width="290" height="198" alt="image" src="https://github.com/user-attachments/assets/1b275d40-eefc-46b8-a590-966fc30472ae" /> | <img width="449" height="282" alt="image" src="https://github.com/user-attachments/assets/3e19f9db-1757-437d-83eb-188e10d45b0c" /> | <img width="452" height="264" alt="image" src="https://github.com/user-attachments/assets/20adf183-e813-4e8e-b204-1ee5b676cb6f" /> |
+
+#### Input:
+- public._intbnd3_skeleton.
+- public._intbnd1_lines_corrected (corrected version).
+- ib.international_boundary_node
+#### TO-DO in FME:
+- Enable the 3 feature types mentioned above (use “Enable only” on the first one, then enable the other two).
+- Make sure no other feature types are activated.
+- Make sure the links between _intbnd1_lines_corrected and the AttributeRemover (Step 2.1) and LineOnAreaOverlayer transformers (Step 3) are disabled.
+- Run workbench.
+
+#### Steps description:
+1.	Initial selection:
+ a.	Select objects from _intbnd3_skeleton which intersect ib_boundary_nodes  they are kept in the initial selection.
+ b.	Remove the objects from _INTBND3_skeleton which intersect only one or two objects from _INTBND1_lines_corrected.
+ c.	Dissolve all the selected objects from _INTBND3_skeleton so that they are split only at the intersection of three or more objects.
+ d.	Manage UIDs.
+<img width="945" height="403" alt="image" src="https://github.com/user-attachments/assets/757beeea-107b-4cf7-9b48-14a42d60cae0" />
+
+2.	Clean the resulting objects: at this stage, there are still some small dangling segments sprouting from the main line in the table. This step aims at deleting as many of these dangles as possible.
+ a.	Generate nodes from the objects coming out of step1.
+ b.	Identify dangling nodes by selecting nodes, i.e. nodes linked only to 1 skeleton object from step 1.
+ c.	Among these nodes, some are actually connected to loops and are not really dangling nodes: remove them from the selected nodes.
+ d.	Keep only the objects from step 1 which do not intersect the selected dangling nodes -> these objects are recorded in _INTBND4_corrected (to be corrected in the next step).
+<img width="944" height="241" alt="image" src="https://github.com/user-attachments/assets/1dc52f9d-2f3b-4ed4-980e-d240edef5130" />
+
+ e.	Generate nodes from these selected skeleton objects and select those which are connected to at least 3 objects -> record them in _INTBND4_suspicious_nodes.
+ 
+<img width="552" height="192" alt="image" src="https://github.com/user-attachments/assets/57d26dfb-64b4-4f4d-beac-4831ef007020" />
+
+#### Output:
+- public._intbnd4_corrected (before correction).
+- public._intbnd4_suspicious_nodes (not created if empty).
+
+## Step 4.2 (manual): Delete irrelevant objects
+#### Input:
+- public._intbnd4_corrected (before correction).
+- public._intbnd4_suspicious_nodes.
+Steps to be performed:
+1.	In QGIS, open both tables and go through the suspicious nodes. Each node should correspond to the location of an object sprouting from the main line, to be deleted.
+2.	Manually delete the irrelevant objects.
+
+| Case 1: small segment connecting two sides of a polygon | Case 2: intermediate dangle which gave birth to several other dangles in the initial skeleton table | 
+|---------------------------------------------|---------------------------------------------|
+|<img width="463" height="260" alt="image" src="https://github.com/user-attachments/assets/f3954ea6-f7fe-4761-b1a9-18dbba822d1e" /> | <img width="317" height="266" alt="image" src="https://github.com/user-attachments/assets/27bf7ccf-f9d4-405e-9137-23d5d714f3a4" /> | 
+
+#### Output:
+- public._intbnd4_corrected (corrected version).
+
+## Step 4.3 (FME): Finalization
+#### Input:
+- public._intbnd4_corrected (corrected version).
+- public._intbnd2_agreed_lines.
+#### TO-DO in FME:
+- In the Step 4.3 frame, enable public._intbnd4_corrected feature type and public._intbnd2_agreed_lines (make sure no other feature type is enabled).
+- Run workbench.
+#### Steps description:
+1.	Combine _intbnd4_corrected and _intbnd3_agreed_lines.
+2.	Dissolve all lines.
+3.	Slightly generalize them in order to avoid having too many vertices (Douglas-Peucker algorithm with a 10-cm tolerance).
+4.	Add UUIDs and clean attributes. Note that legal_status will be set to “not_agreed” and technical_status will be set to “edge_matched”.
+5.	Generate suspicious nodes to control the data: this table should be empty.
+
+<img width="945" height="191" alt="image" src="https://github.com/user-attachments/assets/6909aeac-9881-4693-ab2a-0d35d42e311c" />
+
+> Note: it was originally planned to distinguish agreed portions of the boundary (coming from _intbnd3_agreed_lines) from calculated lines in the final table. However, agreed portions could be very small and create errors in the edge-matching process. Two options were considered:
+> -	Keeping agreed lines longer than a given length threshold.
+> -	Merging all lines.
+> Since there was no clear requirement to make this distinction, the second option was kept.
+
+#### Output:
+- public._intbnd5_boundary_final_xx_yy (where xx and yy are the country codes of the countries to process)
+- public._intbnd5_suspicious_nodes_verification_xx_yy (not created if empty)  this table should not be created. If it is, go through the new suspicious nodes and correct _intbnd4_corrected on these locations. Then launch step 4.3 again.
+
+## Step 4.4 (PgAdmin): Integration into ib.international_boundary_line
+**WARNING: to be performed by one of the database’s administrators**
+````
+UPDATE ib.international_boundary_line SET gcms_detruit = true WHERE country = 'country1#country2';
+
+INSERT INTO ib.international_boundary_line (objectid, begin_lifespan_version, country, legal_status, technical_status, geom, boundary_type, boundary_source)
+SELECT objectid, begin_lifespan_version, country, legal_status, technical_status, geom, boundary_type, xy_source
+FROM _intbnd5_boundary_final_xx_yy;
+````
+
+
+
+
+
 
 
 
