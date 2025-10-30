@@ -39,7 +39,7 @@ There are three of them:
 4.	Gather edges from the two countries into a single table and planarize the data.
 5.	Merge the lines to remove pseudo-nodes: the remaining lines are split only where at least 3 objects intersect.
 
-<img width="auto" height="300" alt="image" src="https://github.com/user-attachments/assets/72fe3e53-90f8-4e4b-827a-b39cc097e3fd" />
+<img width="945" height="162" alt="image" src="https://github.com/user-attachments/assets/72fe3e53-90f8-4e4b-827a-b39cc097e3fd" />
 
 ##### Output:
 - public._intbnd1_ lines (backup copy)
@@ -68,6 +68,7 @@ Since we are working on the BE#NL international boundary, all lines which do not
 ##### Output:
 - public._intbnd1_lines_corrected (corrected version)
 - ib._international_boundary_node
+
 <img width="893" height="310" alt="image" src="https://github.com/user-attachments/assets/37709ce7-7386-43bf-ab1c-71399a37ff50" />
 
 ### Step 2.1 (FME): Create polygons wherever the two versions of the boundary differ 
@@ -79,7 +80,7 @@ Since we are working on the BE#NL international boundary, all lines which do not
 - Then run the workbench.
 - Disable the link between _intbnd1_lines_corrected and the AttributeRemover tranformer in section Step 2.1.
 ##### Steps description:
-Generate polygons from the input table  all in-dispute areas between the two boundaries are transformed into polygons. However, this also creates polygons inside enclaves, which need to be deleted before the next step because they are not needed to generate the common boundary.
+Generate polygons from the input table -> all in-dispute areas between the two boundaries are transformed into polygons. However, this also creates polygons inside enclaves, which need to be deleted before the next step because they are not needed to generate the common boundary.
 <img width="945" height="175" alt="image" src="https://github.com/user-attachments/assets/564e5ee9-6ce8-408d-ac61-92b467cfb949" />
 
 ##### Output:
@@ -96,6 +97,7 @@ Generate polygons from the input table  all in-dispute areas between the two 
 Delete all enclaves i.e. all the polygons inside which we shouldn’t calculate a new boundary.
 ##### Output:
 - public._intbnd2_polygons_corrected (corrected version).
+
 <img width="698" height="445" alt="image" src="https://github.com/user-attachments/assets/ae00d5c8-18b3-45fb-a029-4effb09ff69e" />
 
 ### Step 3 (FME): Generate skeletons (~centerlines) from the boundary polygons
@@ -119,6 +121,7 @@ Delete all enclaves i.e. all the polygons inside which we shouldn’t calculate 
 
 ##### Output:
 - public._intbnd3_skeleton (backup copy).
+
 <img width="678" height="372" alt="image" src="https://github.com/user-attachments/assets/f7af85f3-96f8-471f-a2a1-13820330bbec" />
 
 From these skeletons, we want to extract the main central line i.e. eliminate all small objects growing out of the central line.
@@ -145,7 +148,7 @@ The lines to be kept answer to the following characteristics:
 
 ##### Steps description:
 1.	Initial selection:
- a.	Select objects from _intbnd3_skeleton which intersect ib_boundary_nodes  they are kept in the initial selection.
+ a.	Select objects from _intbnd3_skeleton which intersect ib_boundary_nodes -> they are kept in the initial selection.
  b.	Remove the objects from _INTBND3_skeleton which intersect only one or two objects from _INTBND1_lines_corrected.
  c.	Dissolve all the selected objects from _INTBND3_skeleton so that they are split only at the intersection of three or more objects.
  d.	Manage UIDs.
