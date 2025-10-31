@@ -209,7 +209,8 @@ Parameters used:
 
 Previously split areas that were not removed are merged. This is done by merging all areas with the same value for _NATIONAL_IDENTIFIER_NAME_.
 
-![320_3_with_key](images/320_3_with_key.png)
+<img width="643" height="600" alt="image" src="https://github.com/user-attachments/assets/3664e814-dca4-41aa-b6e2-8e5dfaeeb35e" />
+
 
 Notes:
 - To avoid creating thin gaps, all merges are preceded by a snapping step (using the ign::geometry::algorithm::SnapOpGeos::SnapTo function).
@@ -274,7 +275,7 @@ Parameters used:
 
 The operator iterates through all areas in the _AREA_TABLE_INIT_ table belonging to 'country 1' and calculates the overlap areas with each area in this table belonging to 'country 2'. Each overlap area is stored in the _INTERSECTION_AREA_TABLE_.
 
-![334_with_key](images/334_with_key.png)
+<img width="636" height="600" alt="image" src="https://github.com/user-attachments/assets/6e4cd7b4-a5ef-4028-93f9-d9fb13c13382" />
 
 ### 335: GenerateCuttingPoints
 
@@ -318,7 +319,8 @@ The calculation of _'cutting points'_ consists of iterating through the areas in
 
 The same calculation is performed by iterating through the _INTERSECTION_AREA_TABLE_.
 
-![335_with_key](images/335_with_key.png)
+<img width="550" height="813" alt="image" src="https://github.com/user-attachments/assets/fea182a1-bd49-4ca7-aef3-a4b9b58183e1" />
+
 
 ### 340: MergeAreas
 
@@ -339,11 +341,13 @@ The merging process takes place in two steps:
 
 1. Lists of identifiers are generated for groups of areas to be merged. To form a group, start from a polygon of country 1 and search for all polygons of country 2 that overlap it. The process is repeated until all groups are formed.
 
-![340_1_with_key](images/340_1_with_key.png)
+<img width="600" height="329" alt="image" src="https://github.com/user-attachments/assets/9bb4f6cb-ad54-4d29-a954-5ab50ed0d8ca" />
+
 
 2. For each group, the polygons it contains are merged. Only one polygon should result from merging a group since the polygons constitute a single continuous area.
 
-![340_2_with_key](images/340_2_with_key.png)
+<img width="2056" height="554" alt="image" src="https://github.com/user-attachments/assets/fb2ac02e-4058-4af3-86e7-b774a9f38e3a" />
+
 
 ### 350: SplitMergedAreasWithCF
 
@@ -369,28 +373,33 @@ Parameters used:
 
 To calculate all splitting sections, the areas in the _AREA_TABLE_INIT_ table are iterated. For each area, the first step is to collect all 'cutting points' located on the external contour of the polygon as well as the ends of 'cutting lines' linked to this polygon.
 
-![350_1_with_key](images/350_1_with_key.png)
+<img width="600" height="641" alt="image" src="https://github.com/user-attachments/assets/32463e48-5c4c-4d79-8356-7b9269205a20" />
+
 
 The principle for calculating splitting sections from _'cutting points'_ is to project the cutting points onto nearby sub-contours. If it is not possible to select a segment, the point is ignored.
 If a _'cutting point'_ is close enough to another _'cutting point'_ (at a distance less than _DIST_SNAP_MERGE_CF_) for which a splitting section has already been calculated, it is ignored.
 
-![350_2_with_key](images/350_2_with_key.png)
+<img width="571" height="600" alt="image" src="https://github.com/user-attachments/assets/07680c40-a022-4f4c-b3a7-be45629ee997" />
+
 
 For each [cutting point–projection] section, the proportion of the segment inside the area is calculated. If the ratio is close to zero (almost entirely outside the area), the section is ignored.
 If the path is long, the section is considered illegitimate and ignored.
 
 Note: For path calculation, the **epg::tools::MultiLineStringTool** operator is used, which encapsulates the polygon's contour as a simple adjacency graph.
 
-![350_5_with_key](images/350_5_with_key.png)
+<img width="1182" height="600" alt="image" src="https://github.com/user-attachments/assets/27540e7f-f7e3-4a9f-9f80-da1f8b2de3c9" />
+
 
 The splitting geometries defined by _'cutting lines'_ often need to be extended at their ends to reach the edges of the merged areas. The axial projection is performed for this purpose.
 
-![350_3_with_key](images/350_3_with_key.png)
+<img width="849" height="600" alt="image" src="https://github.com/user-attachments/assets/a3d61ed2-59a0-45f7-8fda-2dbd2ac61a0e" />
+
 
 Once the splitting section is calculated, to avoid precision issues and ensure the split will be performed correctly, both ends of this section are slightly extended.
 When several _'cutting lines'_ originally meet at one end, it is ensured that, for this end, the _'cutting lines'_ are projected onto the same point.
 
-![350_4_with_key](images/350_4_with_key.png)
+<img width="600" height="382" alt="image" src="https://github.com/user-attachments/assets/d33c0292-63a7-44a2-98a0-5571576ddb88" />
+
 
 Once all splitting geometries calculated from _'cutting lines'_ and _'cutting points'_ are ready, the **app::tools::geometry::PolygonSplitter** operator is used to split the area.
 
@@ -458,7 +467,8 @@ Lastly, for each group, all constituent areas are merged. The resulting object i
 
 This entire process is repeated until no more merges can be performed.
 
-![370_3_with_key](images/370_3_with_key.png)
+<img width="1254" height="400" alt="image" src="https://github.com/user-attachments/assets/e4243b7c-3d7f-4140-9338-bcefb594ee12" />
+
 
 ### 399: SortingStandingWater
 
