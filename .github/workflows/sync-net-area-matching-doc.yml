@@ -13,14 +13,14 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: openmapsforeurope2/ome2-doc
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.OME2_DOC_PUSH_TOKEN }}
           path: ome2-doc
 
       - name: Checkout net_area_matching repository
         uses: actions/checkout@v4
         with:
           repository: openmapsforeurope2/net_area_matching
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.OME2_DOC_PUSH_TOKEN }}
           path: net_area_matching
 
       - name: Copy and overwrite MD file
