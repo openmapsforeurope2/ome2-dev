@@ -91,6 +91,42 @@ For detailed options, run with `--help`.
 
 ---
 
+## Detailed Pipeline Steps
+
+### 1. Initialization
+- Load EPG (environment/project) parameters and theme/step configurations.
+- Initialize logging, workspace, and database connections.
+- Parse processing steps to execute (e.g., boundary matching, refinement).
+
+### 2. Data Preparation
+- Load source administrative units from provided spatial databases.
+- Optionally, apply geometry cleaning and attribute normalization.
+
+### 3. Landmask and Coastline Initialization
+- Extract and process landmask and coastal features.
+- Prepare for correct handling of coastal boundaries during matching.
+
+### 4. Boundary Matching
+- Identify cross-border features and their neighbor relationships.
+- Compute angles and geometric metrics for alignment.
+- Apply spatial algorithms to align and match boundaries between countries.
+- Store matching results, including matched feature IDs and geometry adjustments.
+
+### 5. Geometry Refinement
+- Refine the resulting geometries to remove slivers, overlaps, and other topological errors.
+- Use geometric operations (buffering, union, difference) for cleanup.
+
+### 6. Feature Extraction & Output
+- Extract unified/matched features for output.
+- Write results to target spatial database or output files.
+- Generate logs and statistics for the matching process.
+
+### 7. Finalization
+- Clean up resources, close database connections.
+- Summarize process results and errors in log output.
+
+---
+
 ## Contributing
 
 See [CONTRIBUTING.md](https://github.com/openmapsforeurope2/au_matching/blob/main/CONTRIBUTING.md) for guidelines, style guides, and information on joining the project team.
